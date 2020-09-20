@@ -1,0 +1,12 @@
+myTree.insert(50);
+		myTree.insert(11);
+		myTree.insert(54);
+		myTree.insert(45);
+		myTree.insert(21);
+		myTree.insert(82);
+
+
+		                     50
+		       11                       54
+		 x            45                             82
+		         21
