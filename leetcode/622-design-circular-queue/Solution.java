@@ -1,8 +1,8 @@
 class MyCircularQueue {
     int[] nums;
-    int size;
     int rear;
     int front;
+    int size;
     /** Initialize your data structure here. Set the size of the queue to be k. */
     public MyCircularQueue(int k) {
         nums = new int[k];
@@ -18,8 +18,8 @@ class MyCircularQueue {
         if (rear == nums.length) {
             rear = 0;
         }
-        size++;
         nums[rear] = value;
+        size++;
         return true;
     }
     
@@ -38,18 +38,18 @@ class MyCircularQueue {
     
     /** Get the front item from the queue. */
     public int Front() {
-        if (!isEmpty()) {
-            return nums[front];
+        if (isEmpty()) {
+            return -1;
         }
-        return -1;
+        return nums[front];
     }
     
     /** Get the last item from the queue. */
     public int Rear() {
-        if (!isEmpty()) {
-            return nums[rear];
+        if (isEmpty()) {
+            return -1;
         }
-        return -1;
+        return nums[rear];
     }
     
     /** Checks whether the circular queue is empty or not. */

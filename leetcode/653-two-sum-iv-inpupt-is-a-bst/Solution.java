@@ -18,9 +18,9 @@ class Solution {
         if (root == null) {
             return false;
         }
-        return recFind(root, new HashSet<Integer>(), k);
+        return recFind(root, k, new HashSet<Integer>());
     }
-    private boolean recFind(TreeNode node, Set<Integer> set, int k) {
+    private boolean recFind(TreeNode node, int k, Set<Integer> set) {
         if (node == null) {
             return false;
         }
@@ -28,7 +28,6 @@ class Solution {
             return true;
         }
         set.add(node.val);
-        return recFind(node.left, set, k) || recFind(node.right, set, k);
-        
+        return recFind(node.left, k, set) || recFind(node.right, k, set);
     }
 }

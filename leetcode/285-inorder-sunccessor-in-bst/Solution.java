@@ -21,7 +21,7 @@ class Solution {
                 cur = cur.left;
             }
             cur = stack.pop();
-            if (prev == p) {
+            if (p == prev) {
                 return cur;
             }
             prev = cur;

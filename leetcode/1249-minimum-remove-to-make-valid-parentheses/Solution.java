@@ -1,7 +1,7 @@
 class Solution {
     public String minRemoveToMakeValid(String s) {
         if (s.length() == 0) {
-            return "";
+            return s;
         }
         Stack<Integer> stack = new Stack<Integer>();
         StringBuilder sb = new StringBuilder();
@@ -12,8 +12,8 @@ class Solution {
             }
             else if (s.charAt(i) == ')') {
                 if (!stack.isEmpty()) {
-                    sb.append(s.charAt(i));
                     stack.pop();
+                    sb.append(s.charAt(i));
                 }
             }
             else {

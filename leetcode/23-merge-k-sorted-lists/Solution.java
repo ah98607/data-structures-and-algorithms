@@ -33,10 +33,10 @@ class Solution {
             else {
                 head = temp;
             }
+            prev = temp;
             if (temp.next != null) {
                 pq.offer(temp.next);
             }
-            prev = temp;
         }
         return head;
     }

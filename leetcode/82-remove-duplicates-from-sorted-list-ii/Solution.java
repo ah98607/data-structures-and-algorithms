@@ -13,11 +13,11 @@ class Solution {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode cur = head;
         ListNode dHead = new ListNode(0, head);
+        ListNode cur = head;
         ListNode prev = dHead;
         while (cur != null) {
-            if (cur.next != null && cur.next.val == cur.val) {
+            if (cur.next != null && cur.val == cur.next.val) {
                 int dupVal = cur.val;
                 cur = cur.next.next;
                 while (cur != null && cur.val == dupVal) {

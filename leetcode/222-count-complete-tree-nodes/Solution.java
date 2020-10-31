@@ -20,14 +20,14 @@ class Solution {
         }
         TreeNode lCur = root;
         TreeNode rCur = root;
-        int y = 0;
+        int level = 0;
         while (lCur != null && rCur != null) {
             lCur = lCur.left;
             rCur = rCur.right;
-            y++;
+            level++;
         }
         if (lCur == null && rCur == null) {
-            return (int) Math.pow(2, y) - 1;
+            return (int) Math.pow(2, level) - 1;
         }
         return 1 + countNodes(root.left) + countNodes(root.right);
     }

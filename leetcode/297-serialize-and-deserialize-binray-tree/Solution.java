@@ -18,12 +18,12 @@ public class Codec {
             sb.append("#");
             return sb;
         }
-        sb.append(node.val).append(",");
+        sb.append(node.val + ",");
         sHelper(node.left, sb).append(",");
         sHelper(node.right, sb);
         return sb;
     }
-    
+
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
         Queue<String> q = new LinkedList<String>();
@@ -53,5 +53,6 @@ public class Codec {
 }
 
 // Your Codec object will be instantiated and called as such:
-// Codec codec = new Codec();
-// codec.deserialize(codec.serialize(root));
+// Codec ser = new Codec();
+// Codec deser = new Codec();
+// TreeNode ans = deser.deserialize(ser.serialize(root));

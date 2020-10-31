@@ -24,8 +24,8 @@ class Solution {
         if (k % len == 0) {
             return head;
         }
-        k = k % len;
         prev.next = head;
+        k %= len;
         cur = head;
         for (int i = 0; i < len - k; i++) {
             prev = cur;

@@ -14,22 +14,19 @@
  * }
  */
 class Elem {
-    int val;
     int y;
-    public Elem(int val, int y) {
-        this.val = val;
+    int val;
+    public Elem(int y, int val) {
         this.y = y;
+        this.val = val;
     }
 }
 class Solution {
     public List<List<Integer>> verticalTraversal(TreeNode root) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (root == null) {
-            return res;
-        }
+        Map<Integer, List<Elem>> map = new HashMap<Integer, List<Elem>>();
         Queue<TreeNode> nq = new LinkedList<TreeNode>();
         Queue<Integer> iq = new LinkedList<Integer>();
-        Map<Integer, List<Elem>> map = new HashMap<Integer, List<Elem>>();
         nq.offer(root);
         iq.offer(0);
         int y = 0;
@@ -45,7 +42,7 @@ class Solution {
                 if (!map.containsKey(x)) {
                     map.put(x, new ArrayList<Elem>());
                 }
-                map.get(x).add(new Elem(temp.val, y));
+                map.get(x).add(new Elem(y, temp.val));
                 if (temp.left != null) {
                     nq.offer(temp.left);
                     iq.offer(x - 1);
@@ -57,7 +54,7 @@ class Solution {
             }
             y++;
         }
-        for (int i = minx; i <= maxx; i++) {
+        for (int i = minx; i<= maxx; i++) {
             Collections.sort(map.get(i), new Comparator<Elem>() {
                 public int compare(Elem e1, Elem e2) {
                     if (e1.y != e2.y) {

@@ -18,10 +18,10 @@ class Solution {
         if (root == null) {
             return null;
         }
-        int sum = recFind(root);
+        int total = getSum(root);
         Stack<TreeNode> stack = new Stack<TreeNode>();
         TreeNode cur = root;
-        int preSum = 0;
+        int prevSum = 0;
         while (!stack.isEmpty() || cur != null) {
             while (cur != null) {
                 stack.push(cur);
@@ -29,19 +29,17 @@ class Solution {
             }
             cur = stack.pop();
             int temp = cur.val;
-            cur.val = sum - preSum;
-            preSum += temp;
+            cur.val = total - prevSum;
+            prevSum += temp;
             cur = cur.right;
         }
         return root;
     }
-    private int recFind(TreeNode node) {
+    private int getSum(TreeNode node) {
         if (node == null) {
             return 0;
         }
         int sum = node.val;
-        sum += recFind(node.left);
-        sum += recFind(node.right);
-        return sum;
+        return sum + getSum(node.left) + getSum(node.right);
     }
 }

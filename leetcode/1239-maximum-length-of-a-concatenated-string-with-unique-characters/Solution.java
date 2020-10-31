@@ -10,17 +10,17 @@ class Solution {
     private void recFind(int start, int len, int bin, List<String> sList) {
         maxLen = Math.max(maxLen, len);
         for (int i = start; i < sList.size(); i++) {
-            int localBin = bin;
+            int newBin = bin;
             boolean shareChar = false;
             for (int j = 0; j < sList.get(i).length(); j++) {
-                if (((localBin >> (sList.get(i).charAt(j) - 'a')) & 1) == 1) {
+                if (((newBin >> (sList.get(i).charAt(j) - 'a')) & 1) == 1) {
                     shareChar = true;
                     break;
                 }
-                localBin |= 1 << (sList.get(i).charAt(j) - 'a');
+                newBin |= 1 << (sList.get(i).charAt(j) - 'a');
             }
             if (!shareChar) {
-                recFind(i + 1, len + sList.get(i).length(), localBin, sList);
+                recFind(i + 1, len + sList.get(i).length(), newBin, sList);
             }
         }
     }

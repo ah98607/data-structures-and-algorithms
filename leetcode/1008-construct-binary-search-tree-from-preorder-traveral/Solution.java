@@ -15,9 +15,6 @@
  */
 class Solution {
     public TreeNode bstFromPreorder(int[] preorder) {
-        if (preorder.length == 0) {
-            return null;
-        }
         return recFind(preorder, 0, preorder.length - 1);
     }
     private TreeNode recFind(int[] nums, int left, int right) {

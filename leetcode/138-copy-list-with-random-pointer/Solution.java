@@ -18,9 +18,9 @@ class Solution {
         if (head == null) {
             return null;
         }
+        Map<Node, Node> map = new HashMap<Node, Node>();
         Node cur = head;
         Node prev = null;
-        Map<Node, Node> map = new HashMap<Node, Node>();
         while (cur != null) {
             map.put(cur, new Node(cur.val));
             if (prev != null) {

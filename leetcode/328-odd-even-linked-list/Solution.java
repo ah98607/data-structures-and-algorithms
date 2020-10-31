@@ -13,11 +13,11 @@ class Solution {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode evenPrev = head;
-        ListNode oddHead = head.next;
-        ListNode oddPrev = oddHead;
-        int index = 2;
         ListNode cur = head.next.next;
+        ListNode evenPrev = head;
+        ListNode oddPrev = head.next;
+        ListNode oddHead = head.next;
+        int index = 2;
         while (cur != null) {
             if ((index & 1) == 0) {
                 evenPrev.next = cur;

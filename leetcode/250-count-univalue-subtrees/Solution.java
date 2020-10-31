@@ -32,7 +32,7 @@ class Solution {
             res++;
             return true;
         }
-        if (node.left != null && node.right != null) {
+        else if (node.left != null & node.right != null) {
             if (node.val == node.left.val && node.val == node.right.val && leftRes && rightRes) {
                 res++;
                 return true;

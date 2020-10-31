@@ -7,20 +7,20 @@ class Solution {
         int start = 0;
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] != nums[i - 1] + 1) {
-                if (i == start + 1) {
-                    res.add(String.valueOf(nums[start]));
+                if (i - 1 != start) {
+                    res.add(nums[start] + "->" + nums[i - 1]);
                 }
                 else {
-                    res.add(nums[start] + "->" + nums[i - 1]);
+                    res.add(String.valueOf(nums[start]));
                 }
                 start = i;
             }
         }
-        if (nums.length == start + 1) {
-            res.add(String.valueOf(nums[start]));
+        if (nums.length - 1 != start) {
+            res.add(nums[start] + "->" + nums[nums.length - 1]);
         }
         else {
-            res.add(nums[start] + "->" + nums[nums.length - 1]);
+            res.add(String.valueOf(nums[start]));
         }
         return res;
     }

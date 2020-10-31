@@ -18,11 +18,11 @@ class Solution {
         boolean[][] vis = new boolean[matrix.length][matrix[0].length];
         pq.offer(new Elem(0, 0, matrix[0][0]));
         vis[0][0] = true;
-        Elem temp = null;
-        while (!pq.isEmpty() && k > 0) {
-            temp = pq.poll();
-            int r = temp.row;
-            int c = temp.col;
+        Elem e = null;
+        while (k > 0) {
+            e = pq.poll();
+            int r = e.row;
+            int c = e.col;
             if (r < matrix.length - 1 && !vis[r + 1][c]) {
                 pq.offer(new Elem(r + 1, c, matrix[r + 1][c]));
                 vis[r + 1][c] = true;
@@ -33,6 +33,6 @@ class Solution {
             }
             k--;
         }
-        return temp.val;
+        return e.val;
     }
 }

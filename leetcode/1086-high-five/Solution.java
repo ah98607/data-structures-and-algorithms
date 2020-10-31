@@ -14,11 +14,11 @@ class Solution {
         int[][] res = new int[map.size()][2];
         int index = 0;
         for (Map.Entry<Integer, Queue<Integer>> entry : map.entrySet()) {
-            res[index][0] = entry.getKey();
             int total = 0;
             for (int i = 0; i < 5; i++) {
                 total += entry.getValue().poll();
             }
+            res[index][0] = entry.getKey();
             res[index++][1] = total / 5;
         }
         return res;

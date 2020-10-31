@@ -28,7 +28,7 @@ class Solution {
         ListNode cur1 = n1;
         ListNode cur2 = n2;
         ListNode head = null;
-        ListNode prev=  null;
+        ListNode prev = null;
         while (cur1 != null && cur2 != null) {
             if (cur1.val < cur2.val) {
                 if (prev != null) {

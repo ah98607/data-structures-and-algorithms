@@ -18,7 +18,7 @@ class Solution {
         while (left < right) {
             char temp = arr[left];
             arr[left++] = arr[right];
-            arr[right--] = temp;
+            arr[right--] = temp; 
         }
     }
 }

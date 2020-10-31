@@ -8,7 +8,7 @@ class Solution {
                 n = n / 26 - 1;
             }
             else {
-                sb.append((char) (mod + 'A' - 1));
+                sb.append((char) ('A' + mod - 1));
                 n /= 26;
             }
         }

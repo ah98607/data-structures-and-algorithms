@@ -5,29 +5,25 @@ class Solution {
         int index1 = 0;
         int index2 = 0;
         while (index1 < v1.length && index2 < v2.length) {
-            int temp = Integer.parseInt(v1[index1]) - Integer.parseInt(v2[index2]);
-            if (temp > 0) {
-                return 1;
-            }
-            if (temp < 0) {
+            int diff = Integer.parseInt(v1[index1++]) - Integer.parseInt(v2[index2++]);
+            if (diff < 0) {
                 return -1;
             }
-            index1++;
-            index2++;
+            if (diff > 0) {
+                return 1;
+            }
         }
         while (index1 < v1.length) {
-            int temp = Integer.parseInt(v1[index1]);
-            if (temp > 0) {
+            int num = Integer.parseInt(v1[index1++]);
+            if (num > 0) {
                 return 1;
             }
-            index1++;
         }
         while (index2 < v2.length) {
-            int temp = Integer.parseInt(v2[index2]);
-            if (temp > 0) {
+            int num = Integer.parseInt(v2[index2++]);
+            if (num > 0) {
                 return -1;
             }
-            index2++;
         }
         return 0;
     }

@@ -32,27 +32,27 @@ class Solution {
             return 0;
         }
         Map<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
-        recFind(map, 0, nestedList);
+        recFind(0, nestedList, map);
         int sum = 0;
         for (Map.Entry<Integer, List<Integer>> entry : map.entrySet()) {
             int levelSum = 0;
             for (Integer num : entry.getValue()) {
                 levelSum += num;
             }
-            sum += (map.size() - entry.getKey()) * levelSum;
+            sum += levelSum * (map.size() - entry.getKey());
         }
         return sum;
     }
-    private void recFind(Map<Integer, List<Integer>> map, int level, List<NestedInteger> nestedList) {
+    private void recFind(int level, List<NestedInteger> nestedList, Map<Integer, List<Integer>> map) {
         if (!map.containsKey(level)) {
             map.put(level, new ArrayList<Integer>());
         }
-        for (NestedInteger item : nestedList) {
-            if (item.isInteger()) {
-                map.get(level).add(item.getInteger());
+        for (NestedInteger nestedInteger : nestedList) {
+            if (nestedInteger.isInteger()) {
+                map.get(level).add(nestedInteger.getInteger());
             }
             else {
-                recFind(map, level + 1, item.getList());
+                recFind(level + 1, nestedInteger.getList(), map);
             }
         }
     }

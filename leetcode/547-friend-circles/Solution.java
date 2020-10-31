@@ -1,20 +1,20 @@
 class Solution {
     public int findCircleNum(int[][] M) {
         boolean[] vis = new boolean[M.length];
-        int count = 0;
+        int res = 0;
         for (int i = 0; i < M.length; i++) {
             if (!vis[i]) {
-                count++;
-                recFind(i, vis, M);
+                res++;
+                recFind(M, i, vis);
             }
         }
-        return count;
+        return res;
     }
-    private void recFind(int cur, boolean[] vis, int[][] M) {
+    private void recFind(int[][] M, int cur, boolean[] vis) {
         vis[cur] = true;
         for (int i = 0; i < M[cur].length; i++) {
             if (!vis[i] && M[cur][i] == 1) {
-                recFind(i, vis, M);
+                recFind(M, i, vis);
             }
         }
     }

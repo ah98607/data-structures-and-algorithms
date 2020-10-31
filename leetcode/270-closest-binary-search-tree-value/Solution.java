@@ -16,9 +16,9 @@
 class Solution {
     public int closestValue(TreeNode root, double target) {
         double diff = Math.abs(root.val - target);
+        int res = root.val;
         Stack<TreeNode> stack = new Stack<TreeNode>();
         TreeNode cur = root;
-        int res = root.val;
         while (!stack.isEmpty() || cur != null) {
             while (cur != null) {
                 stack.push(cur);

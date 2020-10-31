@@ -5,15 +5,15 @@ class Solution {
         }
         return x == reverse(x);
     }
-    private int reverse(int x) {
+    private int reverse(int n) {
         int res = 0;
-        while (x > 0) {
-            int temp = res * 10 + x % 10;
+        while (n > 0) {
+            int temp = res * 10 + n % 10;
             if (temp / 10 != res) {
                 return 0;
             }
             res = temp;
-            x /= 10;
+            n /= 10;
         }
         return res;
     }

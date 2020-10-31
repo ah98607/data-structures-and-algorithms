@@ -13,7 +13,7 @@ class Solution {
                     if (j == 0 || grid[i][j - 1] == 0) {
                         p++;
                     }
-                    if (j == grid[i].length - 1 || grid[i][j + 1] == 0) {
+                    if (j == grid[0].length - 1 || grid[i][j + 1] == 0) {
                         p++;
                     }
                 }

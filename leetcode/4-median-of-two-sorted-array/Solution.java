@@ -18,9 +18,9 @@ class Solution {
         while (index2 < nums2.length) {
             merge[index++] = nums2[index2++];
         }
-        if ((merge.length & 1) == 0) {
-            return (merge[merge.length / 2] + merge[merge.length / 2 - 1]) / 2.0;
+        if ((merge.length & 1) == 1) {
+            return merge[merge.length / 2];
         }
-        return merge[merge.length / 2];
+        return (merge[merge.length / 2 - 1] + merge[merge.length / 2]) / 2.0;
     }
 }

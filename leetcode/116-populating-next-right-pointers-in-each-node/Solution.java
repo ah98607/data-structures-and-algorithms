@@ -46,11 +46,9 @@ class Solution {
                 recFind(node.right, node, uncle.left);
             }
             else {
-                node.next = null;
                 recFind(node.left, node, null);
                 recFind(node.right, node, null);
             }
         }
     }
-    
 }

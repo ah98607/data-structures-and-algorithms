@@ -1,16 +1,16 @@
 class Solution {
+    String res = "";
     int maxFreq;
-    String res;
     public String mostCommonWord(String paragraph, String[] banned) {
-        paragraph = paragraph.toLowerCase();
         Set<String> ban = new HashSet<String>();
         for (int i = 0; i < banned.length; i++) {
             ban.add(banned[i]);
         }
+        paragraph = paragraph.toLowerCase();
         Map<String, Integer> freq = new HashMap<String, Integer>();
         int start = 0;
         for (int i = 0; i < paragraph.length(); i++) {
-            if (!alphabetic(paragraph.charAt(i))) {
+            if (paragraph.charAt(i) < 'a' || paragraph.charAt(i) > 'z') {
                 add(paragraph.substring(start, i), freq, ban);
                 start = i + 1;
             }
@@ -32,8 +32,5 @@ class Solution {
             maxFreq = freq.get(s);
             res = s;
         }
-    }
-    private boolean alphabetic(char c) {
-        return c >= 'a' && c <= 'z';
     }
 }

@@ -11,7 +11,7 @@ class Solution {
     /** Resets the array to its original configuration and return it. */
     public int[] reset() {
         int[] nums = new int[ori.length];
-        for (int i = 0; i < ori.length; i++) {
+        for (int i = 0; i < nums.length; i++) {
             nums[i] = ori[i];
         }
         return nums;

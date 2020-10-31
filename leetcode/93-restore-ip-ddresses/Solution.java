@@ -8,17 +8,17 @@ class Solution {
         return res;
     }
     private void recFind(List<String> res, List<String> sList, int start, String s) {
-        if (start == s.length() || sList.size() == 4) {
-            if (start == s.length() && sList.size() == 4) {
+        if (sList.size() == 4 || start == s.length()) {
+            if (sList.size() == 4 && start == s.length()) {
                 StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < sList.size(); i++) {
+                for (int i = 0; i < 4; i++) {
                     sb.append((i == 0 ? "" : ".") + sList.get(i));
                 }
                 res.add(sb.toString());
             }
             return;
         }
-        for (int i = start; i < s.length(); i++) {
+        for (int i = start; i < s.length() && i < start + 3; i++) {
             String temp = s.substring(start, i + 1);
             if (valid(temp)) {
                 sList.add(temp);

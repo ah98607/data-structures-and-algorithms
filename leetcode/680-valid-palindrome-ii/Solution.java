@@ -16,10 +16,10 @@ class Solution {
                 if (diff == 2) {
                     return false;
                 }
-                if (s.charAt(left + 1) == s.charAt(right) && (right - left <= 2 || s.charAt(left + 2) == s.charAt(right - 1))) {
+                if (right - left < 2 || s.charAt(left + 1) == s.charAt(right) && s.charAt(left + 2) == s.charAt(right - 1)) {
                     left++;
                 }
-                else if (s.charAt(left) == s.charAt(right - 1) && (right - left <= 2 || s.charAt(left + 1) == s.charAt(right - 2))) {
+                else if (right - left < 2 || s.charAt(left) == s.charAt(right - 1) && s.charAt(left + 1) == s.charAt(right - 2)) {
                     right--;
                 }
                 else {
@@ -27,6 +27,6 @@ class Solution {
                 }
             }
         }
-        return true;
+        return diff <= 1;
     }
 }

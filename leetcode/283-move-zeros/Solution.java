@@ -7,9 +7,9 @@ class Solution {
             }
         }
     }
-    private void swap(int[] nums, int left, int right) {
-        int temp = nums[left];
-        nums[left] = nums[right];
-        nums[right] = temp;
+    private void swap(int[] nums, int x, int y) {
+        int temp = nums[x];
+        nums[x] = nums[y];
+        nums[y] = temp;
     }
 }

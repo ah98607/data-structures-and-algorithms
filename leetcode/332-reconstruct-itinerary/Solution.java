@@ -1,7 +1,7 @@
 class Solution {
     public List<String> findItinerary(List<List<String>> tickets) {
         List<String> res = new ArrayList<String>();
-        if (tickets.isEmpty()) {
+        if (tickets.size() == 0) {
             return res;
         }
         Map<String, Queue<String>> adj = new HashMap<String, Queue<String>>();
@@ -11,15 +11,15 @@ class Solution {
             if (!adj.containsKey(from)) {
                 adj.put(from, new PriorityQueue<String>());
             }
-            adj.get(from).add(to);
+            adj.get(from).offer(to);
         }
-        recFind(res, "JFK", adj);
+        recFind(res, adj, "JFK");
         Collections.reverse(res);
         return res;
     }
-    private void recFind(List<String> res, String cur, Map<String, Queue<String>> adj) {
+    private void recFind(List<String> res, Map<String, Queue<String>> adj, String cur) {
         while (adj.containsKey(cur) && !adj.get(cur).isEmpty()) {
-            recFind(res, adj.get(cur).poll(), adj);
+            recFind(res, adj, adj.get(cur).poll());
         }
         res.add(cur);
     }

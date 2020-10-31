@@ -12,7 +12,7 @@ class Solution {
                     char temp = cArray[i];
                     cArray[i] = cArray[index];
                     cArray[index] = temp;
-                    return Integer.parseInt(new String(cArray));
+                    return Integer.valueOf(new String(cArray));
                 }
             }
         }

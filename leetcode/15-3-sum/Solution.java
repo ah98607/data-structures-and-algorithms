@@ -29,11 +29,11 @@ class Solution {
                     left++;
                 }
             }
-            else if (-nums[start] > sum) {
-                left++;
+            else if (-nums[start] < sum) {
+                right--;
             }
             else {
-                right--;
+                left++;
             }
         }
     }

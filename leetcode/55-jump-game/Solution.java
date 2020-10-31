@@ -11,7 +11,8 @@ class Solution {
                 }
             }
         }
-        return dp[nums.length - 1];*/
+        return dp[nums.length - 1];
+        */
         int index = 0;
         int reach = 0;
         while (index < nums.length && index <= reach) {

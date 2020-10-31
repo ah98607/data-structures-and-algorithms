@@ -3,7 +3,7 @@ class Solution {
         if (n == 0) {
             return 1;
         }
-        double half = Math.pow(x, n / 2);
+        double half = myPow(x, n / 2);
         if ((n & 1) == 0) {
             return half * half;
         }

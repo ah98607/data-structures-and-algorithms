@@ -12,8 +12,8 @@ class MovingAverage {
         if (q.size() == capacity) {
             sum -= q.poll();
         }
-        sum += val;
         q.offer(val);
+        sum += val;
         return (double) sum / q.size();
     }
 }

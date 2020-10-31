@@ -44,17 +44,13 @@ class MedianFinder {
     }
     
     public double findMedian() {
-        if (q1.isEmpty() && q2.isEmpty()) {
-            return 0;
-        }
         if (q1.size() == q2.size() - 1) {
             return q2.peek();
         }
-        if (q1.size() -1 == q2.size()) {
+        if (q1.size() - 1 == q2.size()) {
             return q1.peek();
         }
         return (q1.peek() + q2.peek()) / 2.0;
-        
     }
 }
 

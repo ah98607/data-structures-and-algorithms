@@ -3,18 +3,17 @@ class Solution {
         if (nums.length == 0) {
             return "0";
         }
-        List<String> sList = new ArrayList<String>();
-        for (int i = 0; i < nums.length; i++) {
-            sList.add(String.valueOf(nums[i]));
-        }
-        Collections.sort(sList, new Comparator<String>() {
+        Queue<String> pq = new PriorityQueue<String>(new Comparator<String>() {
             public int compare(String s1, String s2) {
                 return (s2 + s1).compareTo(s1 + s2);
             }
         });
+        for (int i = 0; i < nums.length; i++) {
+            pq.offer(String.valueOf(nums[i]));
+        }
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < sList.size(); i++) {
-            sb.append(sList.get(i));
+        while (!pq.isEmpty()) {
+            sb.append(pq.poll());
         }
         for (int i = 0; i < sb.length(); i++) {
             if (sb.charAt(i) != '0') {

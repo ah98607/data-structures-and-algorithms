@@ -12,18 +12,19 @@ class Solution {
                 continue;
             }
             int row = getRow(words[i].charAt(0));
+            boolean sameRow = true;
             for (int j = 1; j < words[i].length(); j++) {
-                int tempRow = getRow(words[i].charAt(j));
-                if (tempRow != row) {
+                if (row != getRow(words[i].charAt(j))) {
+                    sameRow = false;
                     break;
                 }
-                if (j == words[i].length() - 1) {
-                    sList.add(words[i]);
-                }
+            }
+            if (sameRow) {
+                sList.add(words[i]);
             }
         }
         String[] res = new String[sList.size()];
-        for (int i = 0; i < res.length; i++) {
+        for (int i = 0; i < sList.size(); i++) {
             res[i] = sList.get(i);
         }
         return res;

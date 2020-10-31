@@ -23,12 +23,10 @@ class Solution {
         q.offer(root);
         while (!q.isEmpty()) {
             int qSize = q.size();
-            boolean added = false;
             for (int i = 0; i < qSize; i++) {
                 TreeNode temp = q.poll();
-                if (!added) {
+                if (i == 0) {
                     res.add(temp.val);
-                    added = true;
                 }
                 if (temp.right != null) {
                     q.offer(temp.right);

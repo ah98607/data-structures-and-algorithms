@@ -17,7 +17,7 @@ class MyCalendar {
         while (index < iList.size() && iList.get(index).start <= start) {
             index++;
         }
-        if (index > 0 && iList.get(index - 1).end > start || index < iList.size() && end > iList.get(index).start) {
+        if (index > 0 && start < iList.get(index - 1).end || index < iList.size() && end > iList.get(index).start) {
             return false;
         }
         iList.add(index, new Interval(start, end));

@@ -1,9 +1,9 @@
 class ListNode {
     int key;
     int val;
-    ListNode next;
-    ListNode prev;
     int freq;
+    ListNode prev;
+    ListNode next;
     public ListNode(int key, int val) {
         this.key = key;
         this.val = val;
@@ -16,12 +16,12 @@ class LFUCache {
     ListNode dTail;
     int capacity;
     public LFUCache(int capacity) {
+        this.capacity = capacity;
         map = new HashMap<Integer, ListNode>();
         dHead = new ListNode(0, 0);
         dTail = new ListNode(0, 0);
         dHead.next = dTail;
         dTail.prev = dHead;
-        this.capacity = capacity;
     }
     
     public int get(int key) {
@@ -30,7 +30,7 @@ class LFUCache {
         }
         ListNode temp = map.get(key);
         remove(temp);
-        temp.freq = temp.freq + 1;
+        temp.freq++;
         add(temp);
         return temp.val;
     }
@@ -50,6 +50,10 @@ class LFUCache {
         map.put(key, new ListNode(key, value));
         add(map.get(key));
     }
+    private void remove(ListNode node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
     private void add(ListNode node) {
         ListNode cur = dHead.next;
         while (cur != dTail && cur.freq <= node.freq) {
@@ -59,10 +63,6 @@ class LFUCache {
         node.prev = cur.prev;
         node.next = cur;
         cur.prev = node;
-    }
-    private void remove(ListNode node) {
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
     }
 }
 

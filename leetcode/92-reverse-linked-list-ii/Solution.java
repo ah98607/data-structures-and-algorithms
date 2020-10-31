@@ -19,14 +19,12 @@ class Solution {
         ListNode nodeAPrev = null;
         for (int i = 0; i < n; i++) {
             if (i < m) {
-                if (i == m - 1) {
-                    nodeA = cur;
-                    nodeAPrev = prev;
-                }
+                nodeA = cur;
+                nodeAPrev = prev;
                 prev = cur;
                 cur = cur.next;
             }
-            else {
+            else if (i < n) {
                 ListNode temp = cur.next;
                 cur.next = prev;
                 prev = cur;

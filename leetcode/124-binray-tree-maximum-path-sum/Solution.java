@@ -14,14 +14,14 @@
  * }
  */
 class Solution {
-    int res;
+    int max;
     public int maxPathSum(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        res = Integer.MIN_VALUE;
+        max = Integer.MIN_VALUE;
         recFind(root);
-        return res;
+        return max;
     }
     private int recFind(TreeNode node) {
         if (node == null) {
@@ -29,7 +29,7 @@ class Solution {
         }
         int leftRes = recFind(node.left);
         int rightRes = recFind(node.right);
-        res = Math.max(res, node.val + Math.max(leftRes, 0) + Math.max(rightRes, 0));
+        max = Math.max(max, node.val + Math.max(0, leftRes) + Math.max(0, rightRes));
         return node.val + Math.max(0, Math.max(leftRes, rightRes));
     }
 }

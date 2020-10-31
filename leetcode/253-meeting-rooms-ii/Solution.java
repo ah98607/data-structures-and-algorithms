@@ -20,12 +20,12 @@ class Solution {
                 return i1.start - i2.start;
             }
         });
-        int rooms = 0;
         Queue<Interval> pq = new PriorityQueue<Interval>(new Comparator<Interval>() {
             public int compare(Interval i1, Interval i2) {
                 return i1.end - i2.end;
             }
         });
+        int rooms = 0;
         for (int i = 0; i < iList.size(); i++) {
             while (!pq.isEmpty() && pq.peek().end <= iList.get(i).start) {
                 pq.poll();

@@ -1,6 +1,9 @@
 class Solution {
     public List<List<String>> findDuplicate(String[] paths) {
         List<List<String>> res = new ArrayList<List<String>>();
+        if (paths.length == 0) {
+            return res;
+        }
         Map<String, List<String>> map = new HashMap<String, List<String>>();
         for (int i = 0; i < paths.length; i++) {
             int start = 0;
@@ -27,8 +30,8 @@ class Solution {
     }
     private void addToMap(String s, String dir, Map<String, List<String>> map) {
         int index = s.indexOf("(");
+        String content = s.substring(index);
         String fileName = s.substring(0, index);
-        String content = s.substring(index + 1);
         if (!map.containsKey(content)) {
             map.put(content, new ArrayList<String>());
         }

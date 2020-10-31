@@ -1,6 +1,6 @@
 class Solution {
     public boolean isAlienSorted(String[] words, String order) {
-        if (words.length < 2 ||  order.length() < 2) {
+        if (words.length < 2 || order.length() < 2) {
             return true;
         }
         int[] od = new int[26];

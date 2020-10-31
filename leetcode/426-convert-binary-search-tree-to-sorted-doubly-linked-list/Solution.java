@@ -26,8 +26,8 @@ class Solution {
         }
         Stack<Node> stack = new Stack<Node>();
         Node cur = root;
-        Node head = null;
         Node prev = null;
+        Node head = null;
         while (!stack.isEmpty() || cur != null) {
             while (cur != null) {
                 stack.push(cur);
@@ -36,11 +36,11 @@ class Solution {
             cur = stack.pop();
             if (prev != null) {
                 prev.right = cur;
+                cur.left = prev;
             }
             else {
                 head = cur;
             }
-            cur.left = prev;
             prev = cur;
             cur = cur.right;
         }

@@ -10,21 +10,22 @@ class Solution {
                 e2ids.get(accounts.get(i).get(j)).add(i);
             }
         }
-        Queue<Integer> q = new LinkedList<Integer>();
         boolean[] vis = new boolean[accounts.size()];
         for (int i = 0; i < accounts.size(); i++) {
             if (!vis[i]) {
+                Queue<Integer> q = new LinkedList<Integer>();
+                Set<String> emails = new TreeSet<String>();
                 q.offer(i);
                 vis[i] = true;
-                Set<String> emails = new TreeSet<String>();
                 while (!q.isEmpty()) {
-                    int temp = q.poll();
-                    for (int j = 1; j < accounts.get(temp).size(); j++) {
-                        emails.add(accounts.get(temp).get(j));
-                        for (Integer uid : e2ids.get(accounts.get(temp).get(j))) {
-                            if (!vis[uid]) {
-                                vis[uid] = true;
-                                q.offer(uid);
+                    int id = q.poll();
+                    for (int j = 1; j < accounts.get(id).size(); j++) {
+                        String email = accounts.get(id).get(j);
+                        emails.add(email);
+                        for (Integer associatedId : e2ids.get(email)) {
+                            if (!vis[associatedId]) {
+                                vis[associatedId] = true;
+                                q.offer(associatedId);
                             }
                         }
                     }

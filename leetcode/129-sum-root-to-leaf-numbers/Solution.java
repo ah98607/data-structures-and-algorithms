@@ -19,10 +19,10 @@ class Solution {
         if (root == null) {
             return 0;
         }
-        recFind(0, root);
+        recFind(root, 0);
         return sum;
     }
-    private void recFind(int num, TreeNode node) {
+    private void recFind(TreeNode node, int num) {
         if (node == null) {
             return;
         }
@@ -30,7 +30,7 @@ class Solution {
         if (node.left == null && node.right == null) {
             sum += num;
         }
-        recFind(num, node.left);
-        recFind(num, node.right);
+        recFind(node.left, num);
+        recFind(node.right, num);
     }
 }

@@ -1,7 +1,7 @@
 class Solution {
     public int repeatedStringMatch(String a, String b) {
-        int repeats = 1;
         String cp = a;
+        int repeats = 1;
         while (cp.length() < b.length()) {
             cp += a;
             repeats++;

@@ -6,17 +6,17 @@ class Solution {
         Arrays.sort(A);
         int left = 0;
         int right = A.length - 1;
-        int res = -1;
+        int sum = -1;
         while (left < right) {
-            int sum = A[left] + A[right];
-            if (sum < K) {
+            int temp = A[left] + A[right];
+            if (temp < K) {
+                sum = Math.max(sum, temp);
                 left++;
-                res = Math.max(res, sum);
             }
             else {
                 right--;
             }
         }
-        return res;
+        return sum;
     }
 }

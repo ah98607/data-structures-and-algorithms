@@ -21,9 +21,6 @@ class Solution {
         return recFind(root.left, root.right);
     }
     private boolean recFind(TreeNode n1, TreeNode n2) {
-        if (n1 == null && n2 == null) {
-            return true;
-        }
-        return n1 != null && n2 != null && n1.val == n2.val && recFind(n1.left, n2.right) && recFind(n1.right, n2.left);
+        return n1 == null && n2 == null || n1 != null && n2 != null && n1.val == n2.val && recFind(n1.left, n2.right) && recFind(n1.right, n2.left);
     }
 }

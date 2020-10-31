@@ -5,14 +5,14 @@ class Solution {
         while (left < right - 1) {
             int mid = left + (right - left) / 2;
             int temp = mid * mid;
-            if (temp == x) {
+            if (x == temp) {
                 return mid;
             }
-            if (temp < x) {
-                left = mid + 1;
+            if (x < temp) {
+                right = mid - 1;
             }
             else {
-                right = mid - 1;
+                left = mid + 1;
             }
         }
         if (x < left * left) {

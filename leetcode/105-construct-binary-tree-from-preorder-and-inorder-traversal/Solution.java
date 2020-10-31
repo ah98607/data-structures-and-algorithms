@@ -29,9 +29,9 @@ class Solution {
             return null;
         }
         TreeNode node = new TreeNode(pre[pl]);
-        int index = map.get(pre[pl]);
-        node.left = recFind(pre, pl + 1, pl + index - il, in, il, index - 1, map);
-        node.right = recFind(pre, pl + index - il + 1, pr, in, index + 1, ir, map);
+        int inorderIndex = map.get(pre[pl]);
+        node.left =  recFind(pre, pl + 1, pl + inorderIndex - il, in, il, inorderIndex - 1, map);
+        node.right = recFind(pre, pl + inorderIndex - il + 1, pr, in, inorderIndex + 1, ir, map);
         return node;
     }
 }

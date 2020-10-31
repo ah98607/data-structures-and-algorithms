@@ -17,7 +17,7 @@ class Solution {
     int moves;
     public int distributeCoins(TreeNode root) {
         if (root == null) {
-            return moves;
+            return 0;
         }
         getNeeds(root);
         return moves;

@@ -8,8 +8,8 @@ class Solution {
         for (int i = 0; i < s.length(); i++) {
             for (int j = 0; j <= i; j++) {
                 if (s.charAt(j) == s.charAt(i) && (i - j < 2 || dp[j + 1][i - 1])) {
-                    count++;
                     dp[j][i] = true;
+                    count++;
                 }
             }
         }

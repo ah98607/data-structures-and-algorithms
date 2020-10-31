@@ -22,8 +22,6 @@ class Solution {
         if (root.val >= L && root.val <= R) {
             sum += root.val;
         }
-        sum += rangeSumBST(root.left, L, R);
-        sum += rangeSumBST(root.right, L, R);
-        return sum;
+        return sum + rangeSumBST(root.left, L, R) + rangeSumBST(root.right, L, R);
     }
 }

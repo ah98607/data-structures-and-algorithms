@@ -1,8 +1,5 @@
 class Solution {
     public int numKLenSubstrNoRepeats(String S, int K) {
-        if (S.length() == 0) {
-            return 0;
-        }
         int[] prevAppear = new int[26];
         Arrays.fill(prevAppear, -1);
         int start = 0;

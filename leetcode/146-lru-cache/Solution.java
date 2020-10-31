@@ -14,12 +14,12 @@ class LRUCache {
     ListNode dTail;
     int capacity;
     public LRUCache(int capacity) {
-        map = new HashMap<Integer, ListNode>();
+        this.capacity = capacity;
         dHead = new ListNode(0, 0);
         dTail = new ListNode(0, 0);
         dHead.next = dTail;
         dTail.prev = dHead;
-        this.capacity = capacity;
+        map = new HashMap<Integer, ListNode>();
     }
     
     public int get(int key) {

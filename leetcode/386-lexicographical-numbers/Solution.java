@@ -12,7 +12,7 @@ class Solution {
         }
         res.add(cur);
         for (int i = 0; i <= 9; i++) {
-            recFind(res, 10 * cur + i, n);
+            recFind(res, cur * 10 + i, n);
         }
     }
 }

@@ -1,9 +1,9 @@
 class Elem {
     char c;
-    int f;
-    public Elem(char c, int f) {
+    int freq;
+    public Elem(char c, int freq) {
         this.c = c;
-        this.f = f;
+        this.freq = freq;
     }
 }
 class Solution {
@@ -22,7 +22,7 @@ class Solution {
         }
         Queue<Elem> pq = new PriorityQueue<Elem>(new Comparator<Elem>() {
             public int compare(Elem e1, Elem e2) {
-                return e2.f - e1.f;
+                return e2.freq - e1.freq;
             }
         });
         for (Map.Entry<Character, Integer> entry : freq.entrySet()) {
@@ -31,7 +31,7 @@ class Solution {
         StringBuilder sb = new StringBuilder();
         while (!pq.isEmpty()) {
             Elem e = pq.poll();
-            for (int i = 0; i < e.f; i++) {
+            for (int i = 0; i < e.freq; i++) {
                 sb.append(e.c);
             }
         }

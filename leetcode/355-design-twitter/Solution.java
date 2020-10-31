@@ -7,12 +7,12 @@ class Tweet {
     }
 }
 class Twitter {
-    List<Tweet> tList;
     Map<Integer, Set<Integer>> map;
+    List<Tweet> tList;
     /** Initialize your data structure here. */
     public Twitter() {
-        tList = new ArrayList<Tweet>();
         map = new HashMap<Integer, Set<Integer>>();
+        tList = new ArrayList<Tweet>();
     }
     
     /** Compose a new tweet. */
@@ -31,7 +31,7 @@ class Twitter {
         }
         int index = tList.size() - 1;
         while (index >= 0 && res.size() < 10) {
-            if (tList.get(index).uid == userId || map.get(userId).contains(tList.get(index).uid)) {
+            if (userId == tList.get(index).uid || map.get(userId).contains(tList.get(index).uid)) {
                 res.add(tList.get(index).tid);
             }
             index--;

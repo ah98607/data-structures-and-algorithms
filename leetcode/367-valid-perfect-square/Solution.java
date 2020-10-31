@@ -1,7 +1,7 @@
 class Solution {
     public boolean isPerfectSquare(int num) {
-        int low = num % 10;
-        if (low == 2 || low == 3 || low == 7 || low == 8) {
+        int lsd = num % 10;
+        if (lsd == 2 || lsd == 3 || lsd == 7 || lsd == 8) {
             return false;
         }
         int left = 1;

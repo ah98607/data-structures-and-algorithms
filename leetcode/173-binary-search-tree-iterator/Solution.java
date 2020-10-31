@@ -17,13 +17,13 @@ class BSTIterator {
     Stack<TreeNode> stack;
     public BSTIterator(TreeNode root) {
         stack = new Stack<TreeNode>();
-        push(root);
+        pushToStack(root);
     }
     
     /** @return the next smallest number */
     public int next() {
         TreeNode temp = stack.pop();
-        push(temp.right);
+        pushToStack(temp.right);
         return temp.val;
     }
     
@@ -31,7 +31,7 @@ class BSTIterator {
     public boolean hasNext() {
         return !stack.isEmpty();
     }
-    private void push(TreeNode node) {
+    private void pushToStack(TreeNode node) {
         while (node != null) {
             stack.push(node);
             node = node.left;

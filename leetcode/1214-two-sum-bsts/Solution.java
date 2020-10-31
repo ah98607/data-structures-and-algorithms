@@ -34,7 +34,7 @@ class Solution {
         if (node == null) {
             return false;
         }
-        if (set.contains(target - node.val)) {
+        if (set.contains(target- node.val)) {
             return true;
         }
         return recFind(node.left, set, target) || recFind(node.right, set, target);

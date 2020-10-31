@@ -15,22 +15,23 @@ class Solution {
         vis.add(startUrl);
         while (!q.isEmpty()) {
             String temp = q.poll();
+            String tempHost = getHost(temp);
             res.add(temp);
             List<String> nextUrls = htmlParser.getUrls(temp);
             for (String nextUrl : nextUrls) {
-                if (!vis.contains(nextUrl) && getHost(temp).equals(getHost(nextUrl))) {
-                    q.offer(nextUrl);
+                if (!vis.contains(nextUrl) && getHost(nextUrl).equals(tempHost)) {
                     vis.add(nextUrl);
+                    q.offer(nextUrl);
                 }
             }
         }
         return res;
     }
-    private String getHost(String url) {
+    private String getHost(String s) {
         int index = 7;
-        while (index < url.length() && url.charAt(index) != '/') {
+        while (index < s.length() && s.charAt(index) != '/') {
             index++;
         }
-        return url.substring(0, index);
+        return s.substring(7, index);
     }
 }

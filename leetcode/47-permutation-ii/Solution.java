@@ -1,9 +1,6 @@
 class Solution {
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (nums.length == 0) {
-            return res;
-        }
         Arrays.sort(nums);
         recFind(res, new ArrayList<Integer>(), new boolean[nums.length], nums);
         return res;

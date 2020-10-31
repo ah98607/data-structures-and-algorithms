@@ -16,7 +16,7 @@ class Solution {
         }
         for (int i = 0; i < 26; i++) {
             for (int j = 0; j < freq[i]; j++) {
-                res.add(String.valueOf((char) (i + 'a')));
+                res.add(String.valueOf((char) ('a' + i)));
             }
         }
         return res;

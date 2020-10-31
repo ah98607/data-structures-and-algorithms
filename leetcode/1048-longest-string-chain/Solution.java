@@ -5,12 +5,12 @@ class Solution {
                 return s1.length() - s2.length();
             }
         });
+        int maxLen = 1;
         int[] dp = new int[words.length];
         Arrays.fill(dp, 1);
-        int maxLen = 0;
-        for (int i = 0; i < words.length; i++) {
+        for (int i = 1; i < words.length; i++) {
             for (int j = 0; j < i; j++) {
-                if (successor(words[j], words[i])) {
+                if (predecessor(words[j], words[i])) {
                     dp[i] = Math.max(dp[i], dp[j] + 1);
                 }
             }
@@ -18,7 +18,7 @@ class Solution {
         }
         return maxLen;
     }
-    private boolean successor(String s1, String s2) {
+    private boolean predecessor(String s1, String s2) {
         if (s1.length() != s2.length() - 1) {
             return false;
         }

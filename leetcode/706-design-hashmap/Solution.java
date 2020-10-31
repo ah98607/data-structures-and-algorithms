@@ -16,7 +16,8 @@ class MyHashMap {
     
     /** value will always be non-negative. */
     public void put(int key, int value) {
-        ListNode cur = arr[key % 100];
+        int genKey = ;
+        ListNode cur = arr[genKey];
         ListNode prev = null;
         while (cur != null) {
             if (cur.key == key) {
@@ -30,13 +31,14 @@ class MyHashMap {
             prev.next = new ListNode(key, value);
         }
         else {
-            arr[key % 100] = new ListNode(key, value);
+            arr[genKey] = new ListNode(key, value);
         }
     }
     
     /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
     public int get(int key) {
-        ListNode cur = arr[key % 100];
+        int genKey = key % 100;
+        ListNode cur = arr[genKey];
         while (cur != null) {
             if (cur.key == key) {
                 return cur.val;
@@ -48,7 +50,8 @@ class MyHashMap {
     
     /** Removes the mapping of the specified value key if this map contains a mapping for the key */
     public void remove(int key) {
-        ListNode cur = arr[key % 100];
+        int genKey = key % 100;
+        ListNode cur = arr[genKey];
         ListNode prev = null;
         while (cur != null) {
             if (cur.key == key) {
@@ -56,9 +59,9 @@ class MyHashMap {
                     prev.next = cur.next;
                 }
                 else {
-                    arr[key % 100] = cur.next;
+                    arr[genKey] = cur.next;
                 }
-                return;
+                break;
             }
             prev = cur;
             cur = cur.next;

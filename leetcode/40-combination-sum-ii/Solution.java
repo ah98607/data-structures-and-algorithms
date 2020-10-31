@@ -1,9 +1,6 @@
 class Solution {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (candidates.length == 0) {
-            return res;
-        }
         Arrays.sort(candidates);
         recFind(res, new ArrayList<Integer>(), 0, target, candidates);
         return res;

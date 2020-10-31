@@ -15,9 +15,6 @@
  */
 class Solution {
     public TreeNode constructMaximumBinaryTree(int[] nums) {
-        if (nums.length == 0) {
-            return null;
-        }
         return recFind(nums, 0, nums.length - 1);
     }
     private TreeNode recFind(int[] nums, int left, int right) {
@@ -25,7 +22,7 @@ class Solution {
             return null;
         }
         int maxIndex = left;
-        for (int i = left; i <= right; i++) {
+        for (int i = left + 1; i <= right; i++) {
             if (nums[i] > nums[maxIndex]) {
                 maxIndex = i;
             }
