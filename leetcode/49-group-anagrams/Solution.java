@@ -22,7 +22,7 @@ class Solution {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 26; i++) {
             for (int j = 0; j < freq[i]; j++) {
-                sb.append((char) (i + 'a'));
+                sb.append((char) ('a' + i));
             }
         }
         return sb.toString();

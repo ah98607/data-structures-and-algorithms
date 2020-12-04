@@ -1,6 +1,6 @@
 class TrieNode {
-    boolean isWord;
     Map<Character, TrieNode> next;
+    boolean isWord;
     public TrieNode() {
         next = new HashMap<Character, TrieNode>();
     }

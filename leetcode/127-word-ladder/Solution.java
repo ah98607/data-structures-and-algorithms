@@ -1,9 +1,9 @@
 class Solution {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        Queue<String> q = new LinkedList<String>();
         Set<String> dict = new HashSet<String>(wordList);
-        int level = 1;
+        Queue<String> q = new LinkedList<String>();
         q.offer(beginWord);
+        int level = 1;
         while (!q.isEmpty()) {
             int qSize = q.size();
             for (int i = 0; i < qSize; i++) {
@@ -22,15 +22,15 @@ class Solution {
         return 0;
     }
     private List<String> getNextWords(String s, Set<String> dict) {
-        List<String> nextWords = new ArrayList<String>();
+        List<String> res = new ArrayList<String>();
         for (int i = 0; i < s.length(); i++) {
             for (int j = 0; j < 26; j++) {
-                String temp = s.substring(0, i) + (char) (j + 'a') + s.substring(i + 1);
+                String temp = s.substring(0, i) + (char) ('a' + j) + s.substring(i + 1);
                 if (dict.contains(temp)) {
-                    nextWords.add(temp);
+                    res.add(temp);
                 }
             }
         }
-        return nextWords;
+        return res;
     }
 }

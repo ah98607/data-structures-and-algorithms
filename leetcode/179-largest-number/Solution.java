@@ -1,8 +1,5 @@
 class Solution {
     public String largestNumber(int[] nums) {
-        if (nums.length == 0) {
-            return "0";
-        }
         Queue<String> pq = new PriorityQueue<String>(new Comparator<String>() {
             public int compare(String s1, String s2) {
                 return (s2 + s1).compareTo(s1 + s2);

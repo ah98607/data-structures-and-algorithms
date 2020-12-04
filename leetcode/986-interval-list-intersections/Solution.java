@@ -8,6 +8,9 @@ class Interval {
 }
 class Solution {
     public int[][] intervalIntersection(int[][] A, int[][] B) {
+        if (A.length == 0 || B.length == 0) {
+            return new int[0][2];
+        }
         List<Interval> join = new ArrayList<Interval>();
         int indexA = 0;
         int indexB = 0;
@@ -20,11 +23,11 @@ class Solution {
             }
             else {
                 join.add(new Interval(Math.max(A[indexA][0], B[indexB][0]), Math.min(A[indexA][1], B[indexB][1])));
-                if (B[indexB][1] > A[indexA][1]) {
-                    indexA++;
+                if (A[indexA][1] > B[indexB][1]) {
+                    indexB++;
                 }
                 else {
-                    indexB++;
+                    indexA++;
                 }
             }
         }

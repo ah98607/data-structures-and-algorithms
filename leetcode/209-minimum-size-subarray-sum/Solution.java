@@ -3,9 +3,9 @@ class Solution {
         if (nums.length == 0) {
             return 0;
         }
+        int minLen = Integer.MAX_VALUE;
         int sum = 0;
         int left = 0;
-        int minLen = Integer.MAX_VALUE;
         for (int i = 0; i < nums.length; i++) {
             sum += nums[i];
             while (left <= i && sum >= s) {

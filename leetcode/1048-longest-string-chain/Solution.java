@@ -1,13 +1,16 @@
 class Solution {
     public int longestStrChain(String[] words) {
+        if (words.length < 2) {
+            return words.length;
+        }
         Arrays.sort(words, new Comparator<String>() {
             public int compare(String s1, String s2) {
                 return s1.length() - s2.length();
             }
         });
-        int maxLen = 1;
         int[] dp = new int[words.length];
         Arrays.fill(dp, 1);
+        int maxLen = 1;
         for (int i = 1; i < words.length; i++) {
             for (int j = 0; j < i; j++) {
                 if (predecessor(words[j], words[i])) {

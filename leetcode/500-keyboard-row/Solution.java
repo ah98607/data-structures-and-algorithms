@@ -2,25 +2,21 @@ class Solution {
     final String charsInRow1 = "qwertyuiopQWERTYUIOP";
     final String charsInRow2 = "asdfghjklASDFGHJKL";
     public String[] findWords(String[] words) {
-        if (words.length == 0) {
-            return new String[0];
-        }
         List<String> sList = new ArrayList<String>();
         for (int i = 0; i < words.length; i++) {
             if (words[i].length() < 2) {
                 sList.add(words[i]);
-                continue;
             }
-            int row = getRow(words[i].charAt(0));
-            boolean sameRow = true;
-            for (int j = 1; j < words[i].length(); j++) {
-                if (row != getRow(words[i].charAt(j))) {
-                    sameRow = false;
-                    break;
+            else {
+                int row = getRow(words[i].charAt(0));
+                for (int j = 1; j < words[i].length(); j++) {
+                    if (getRow(words[i].charAt(j)) != row) {
+                        break;
+                    }
+                    if (j == words[i].length() - 1) {
+                        sList.add(words[i]);
+                    }
                 }
-            }
-            if (sameRow) {
-                sList.add(words[i]);
             }
         }
         String[] res = new String[sList.size()];

@@ -22,7 +22,7 @@ class Solution {
             return null;
         }
         int maxIndex = left;
-        for (int i = left + 1; i <= right; i++) {
+        for (int i = left; i <= right; i++) {
             if (nums[i] > nums[maxIndex]) {
                 maxIndex = i;
             }

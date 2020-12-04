@@ -9,17 +9,17 @@ class Solution {
             if (s.charAt(index) >= '0' && s.charAt(index) <= '9') {
                 int count = s.charAt(index++) - '0';
                 while (s.charAt(index) != '[') {
-                    count = 10 * count + s.charAt(index++) - '0';
+                    count = count * 10 + s.charAt(index++) - '0';
                 }
                 index++;
                 int start = index;
-                int bracket = 1;
-                while (bracket > 0) {
+                int braces = 1;
+                while (braces > 0) {
                     if (s.charAt(index) == '[') {
-                        bracket++;
+                        braces++;
                     }
                     else if (s.charAt(index) == ']') {
-                        bracket--;
+                        braces--;
                     }
                     index++;
                 }

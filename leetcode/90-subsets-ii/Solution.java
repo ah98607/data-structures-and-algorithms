@@ -13,7 +13,6 @@ class Solution {
     private void recFind(List<List<Integer>> res, List<Integer> iList, int start, int end, int[] nums) {
         if (start == end) {
             res.add(new ArrayList<Integer>(iList));
-            return;
         }
         for (int i = start; i < end; i++) {
             if (i > start && nums[i] == nums[i - 1]) {

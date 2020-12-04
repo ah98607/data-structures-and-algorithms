@@ -1,25 +1,22 @@
 class Solution {
     public List<Integer> killProcess(List<Integer> pid, List<Integer> ppid, int kill) {
         List<Integer> res = new ArrayList<Integer>();
-        if (ppid.isEmpty()) {
-            return res;
-        }
-        Map<Integer, List<Integer>> childProcesses = new HashMap<Integer, List<Integer>>();
+        Map<Integer, Set<Integer>> children = new HashMap<Integer, Set<Integer>>();
         for (int i = 0; i < ppid.size(); i++) {
-            if (!childProcesses.containsKey(ppid.get(i))) {
-                childProcesses.put(ppid.get(i), new ArrayList<Integer>());
+            if (!children.containsKey(ppid.get(i))) {
+                children.put(ppid.get(i), new HashSet<Integer>());
             }
-            childProcesses.get(ppid.get(i)).add(pid.get(i));
+            children.get(ppid.get(i)).add(pid.get(i));
         }
-        recFind(res, kill, childProcesses);
+        recFind(res, kill, children);
         return res;
     }
-    private void recFind(List<Integer> res, int kill, Map<Integer, List<Integer>> childProcesses) {
-        if (childProcesses.containsKey(kill)) {
-            for (Integer childProcess : childProcesses.get(kill)) {
-                recFind(res, childProcess, childProcesses);
+    private void recFind(List<Integer> res, int cur, Map<Integer, Set<Integer>> children) {
+        if (children.containsKey(cur)) {
+            for (Integer child : children.get(cur)) {
+                recFind(res, child, children);
             }
         }
-        res.add(kill);
+        res.add(cur);
     }
 }

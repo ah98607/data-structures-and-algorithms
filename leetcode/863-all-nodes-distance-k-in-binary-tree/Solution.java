@@ -35,6 +35,9 @@ class Solution {
         return res;
     }
     private void recFind(TreeNode node, Map<TreeNode, Set<TreeNode>> adj) {
+        if (node == null) {
+            return;
+        }
         if (!adj.containsKey(node)) {
             adj.put(node, new HashSet<TreeNode>());
         }

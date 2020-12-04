@@ -18,18 +18,18 @@ class Solution {
         if (root == null) {
             return 0;
         }
-        int[] res = recFind(root);
-        return Math.max(res[0], res[1]);
+        int[] dp = recFind(root);
+        return Math.max(dp[0], dp[1]);
     }
     private int[] recFind(TreeNode node) {
-        int[] res = new int[2];
+        int[] dp = new int[2];
         if (node == null) {
-            return res;
+            return dp;
         }
         int[] leftRes = recFind(node.left);
         int[] rightRes = recFind(node.right);
-        res[0] = Math.max(leftRes[0], leftRes[1]) + Math.max(rightRes[0], rightRes[1]);
-        res[1] = node.val + leftRes[0] + rightRes[0];
-        return res;
+        dp[0] = Math.max(leftRes[0], leftRes[1]) + Math.max(rightRes[0], rightRes[1]);
+        dp[1] = node.val + leftRes[0] + rightRes[0];
+        return dp;
     }
 }

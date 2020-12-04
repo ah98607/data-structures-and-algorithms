@@ -1,6 +1,6 @@
 class Solution {
-    public boolean wordPattern(String pattern, String str) {
-        String[] sArray = str.split(" ");
+    public boolean wordPattern(String pattern, String s) {
+        String[] sArray = s.split(" ");
         if (pattern.length() != sArray.length) {
             return false;
         }

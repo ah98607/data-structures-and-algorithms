@@ -29,9 +29,9 @@ class Solution {
         Queue<Integer> iq = new LinkedList<Integer>();
         nq.offer(root);
         iq.offer(0);
-        int y = 0;
         int minx = 0;
         int maxx = 0;
+        int y = 0;
         while (!nq.isEmpty()) {
             int qSize = nq.size();
             for (int i = 0; i < qSize; i++) {
@@ -54,7 +54,7 @@ class Solution {
             }
             y++;
         }
-        for (int i = minx; i<= maxx; i++) {
+        for (int i = minx; i <= maxx; i++) {
             Collections.sort(map.get(i), new Comparator<Elem>() {
                 public int compare(Elem e1, Elem e2) {
                     if (e1.y != e2.y) {
@@ -64,8 +64,8 @@ class Solution {
                 }
             });
             List<Integer> iList = new ArrayList<Integer>();
-            for (Elem e : map.get(i)) {
-                iList.add(e.val);
+            for (int j = 0; j < map.get(i).size(); j++) {
+                iList.add(map.get(i).get(j).val);
             }
             res.add(iList);
         }

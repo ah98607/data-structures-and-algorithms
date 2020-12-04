@@ -4,8 +4,8 @@ class Solution {
             return 0;
         }
         Map<Character, Integer> freq = new HashMap<Character, Integer>();
-        int maxLen = 0;
         int start = 0;
+        int maxLen = 0;
         for (int i = 0; i < s.length(); i++) {
             if (!freq.containsKey(s.charAt(i))) {
                 freq.put(s.charAt(i), 1);

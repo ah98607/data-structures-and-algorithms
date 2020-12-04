@@ -9,10 +9,10 @@ class FreqStack {
     
     public void push(int x) {
         if (!n2f.containsKey(x)) {
-            n2f.put(x, 1);
+            n2f.put(x , 1);
         }
         else {
-            n2f.put(x, 1 + n2f.get(x));
+            n2f.put(x , 1 + n2f.get(x));
         }
         int freq = n2f.get(x);
         maxFreq = Math.max(maxFreq, freq);
@@ -26,10 +26,10 @@ class FreqStack {
         List<Integer> iList = f2ns.get(maxFreq);
         int temp = iList.get(iList.size() - 1);
         iList.remove(iList.size() - 1);
+        n2f.put(temp, n2f.get(temp) - 1);
         if (iList.isEmpty()) {
             maxFreq--;
         }
-        n2f.put(temp, n2f.get(temp) - 1);
         return temp;
     }
 }

@@ -3,18 +3,18 @@ class Solution {
         if (n < 3) {
             return 0;
         }
-        boolean[] dp = new boolean[n]; // dp[0-1] not used
-        Arrays.fill(dp, true);
+        boolean[] prime = new boolean[n];
+        Arrays.fill(prime, true);
         for (int i = 2; i < n; i++) {
-            if (dp[i]) {
-                for (int j = 1; i + j * i < n; j++) {
-                    dp[i + j * i] = false;
+            if (prime[i]) {
+                for (int j = i + i; j < n; j += i) {
+                    prime[j] = false;
                 }
             }
         }
         int count = 0;
         for (int i = 2; i < n; i++) {
-            if (dp[i]) {
+            if (prime[i]) {
                 count++;
             }
         }

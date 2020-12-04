@@ -1,7 +1,10 @@
 class Solution {
     public void sortColors(int[] nums) {
-        int index = 0;
+        if (nums.length < 2) {
+            return;
+        }
         int left = 0;
+        int index = 0;
         int right = nums.length - 1;
         while (index <= right) {
             if (nums[index] == 0) {

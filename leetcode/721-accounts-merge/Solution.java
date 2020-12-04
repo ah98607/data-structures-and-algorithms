@@ -10,10 +10,10 @@ class Solution {
                 e2ids.get(accounts.get(i).get(j)).add(i);
             }
         }
+        Queue<Integer> q = new LinkedList<Integer>();
         boolean[] vis = new boolean[accounts.size()];
         for (int i = 0; i < accounts.size(); i++) {
             if (!vis[i]) {
-                Queue<Integer> q = new LinkedList<Integer>();
                 Set<String> emails = new TreeSet<String>();
                 q.offer(i);
                 vis[i] = true;

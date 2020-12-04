@@ -9,7 +9,7 @@ class Solution {
                     }
                 }));
             }
-            map.get(items[i][0]).offer(items[i][1]);
+            map.get(items[i][0]).add(items[i][1]);
         }
         int[][] res = new int[map.size()][2];
         int index = 0;

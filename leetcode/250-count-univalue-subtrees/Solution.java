@@ -32,19 +32,19 @@ class Solution {
             res++;
             return true;
         }
-        else if (node.left != null & node.right != null) {
+        else if (node.left != null && node.right != null) {
             if (node.val == node.left.val && node.val == node.right.val && leftRes && rightRes) {
                 res++;
                 return true;
             }
-        }
+        }   
         else if (node.left != null) {
             if (node.val == node.left.val && leftRes) {
                 res++;
                 return true;
             }
         }
-        else {
+        else if (node.right != null) {
             if (node.val == node.right.val && rightRes) {
                 res++;
                 return true;

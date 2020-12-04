@@ -1,7 +1,7 @@
 class Solution {
     public int maximumSwap(int num) {
-        char[] cArray = String.valueOf(num).toCharArray();
         int[] loc = new int[10];
+        char[] cArray = String.valueOf(num).toCharArray();
         for (int i = 0; i < cArray.length; i++) {
             loc[cArray[i] - '0'] = i;
         }
@@ -12,7 +12,7 @@ class Solution {
                     char temp = cArray[i];
                     cArray[i] = cArray[index];
                     cArray[index] = temp;
-                    return Integer.valueOf(new String(cArray));
+                    return Integer.parseInt(new String(cArray));
                 }
             }
         }

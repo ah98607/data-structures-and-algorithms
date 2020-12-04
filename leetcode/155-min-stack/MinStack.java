@@ -3,8 +3,8 @@ class MinStack {
     Stack<Integer> s2;
     /** initialize your data structure here. */
     public MinStack() {
-        s1 = new Stack();
-        s2 = new Stack();
+        s1 = new Stack<Integer>();
+        s2 = new Stack<Integer>();
     }
     
     public void push(int x) {

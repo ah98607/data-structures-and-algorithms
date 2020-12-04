@@ -19,14 +19,14 @@ class Solution {
         if (root == null) {
             return 0;
         }
-        recFind(new ArrayList<Integer>(), root, sum);
+        recFind(root, sum, new ArrayList<Integer>());
         return res;
     }
-    private void recFind(List<Integer> iList, TreeNode node, int sum) {
+    private void recFind(TreeNode node, int sum, List<Integer> iList) {
         if (node == null) {
             return;
         }
-        iList.add(iList.isEmpty() ? node.val : node.val + iList.get(iList.size() - 1));
+        iList.add(iList.size() == 0 ? node.val : (iList.get(iList.size() - 1) + node.val));
         if (iList.get(iList.size() - 1) == sum) {
             res++;
         }
@@ -35,7 +35,7 @@ class Solution {
                 res++;
             }
         }
-        recFind(new ArrayList<Integer>(iList), node.left, sum);
-        recFind(new ArrayList<Integer>(iList), node.right, sum);
+        recFind(node.left, sum, new ArrayList<Integer>(iList));
+        recFind(node.right, sum, new ArrayList<Integer>(iList));
     }
 }

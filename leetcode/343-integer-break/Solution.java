@@ -8,8 +8,8 @@ class Solution {
             return (int) Math.pow(3, n / 3);
         }
         if (mod == 1) {
-            return (int) Math.pow(3, (n - 4) / 3) * 4;
+            return 4 * (int) Math.pow(3, (n - 4) / 3);
         }
-        return (int) Math.pow(3, (n - 2) / 3) * 2;
+        return 2 * (int) Math.pow(3, (n - 2) / 3);
     }
 }

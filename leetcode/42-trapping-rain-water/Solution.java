@@ -3,9 +3,9 @@ class Solution {
         if (height.length < 3) {
             return 0;
         }
+        int v = 0;
         int left = 0;
         int right = height.length - 1;
-        int v = 0;
         while (left < right) {
             int low = Math.min(height[left], height[right]);
             if (low == height[left]) {
@@ -17,7 +17,7 @@ class Solution {
             else {
                 right--;
                 while (left < right && height[right] < low) {
-                    v += low - height[right--];
+                    v+= low - height[right--];
                 }
             }
         }

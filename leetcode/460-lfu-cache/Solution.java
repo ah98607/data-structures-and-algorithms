@@ -1,9 +1,9 @@
 class ListNode {
     int key;
     int val;
-    int freq;
     ListNode prev;
     ListNode next;
+    int freq;
     public ListNode(int key, int val) {
         this.key = key;
         this.val = val;
@@ -12,12 +12,12 @@ class ListNode {
 }
 class LFUCache {
     Map<Integer, ListNode> map;
+    int capacity;
     ListNode dHead;
     ListNode dTail;
-    int capacity;
     public LFUCache(int capacity) {
-        this.capacity = capacity;
         map = new HashMap<Integer, ListNode>();
+        this.capacity = capacity;
         dHead = new ListNode(0, 0);
         dTail = new ListNode(0, 0);
         dHead.next = dTail;

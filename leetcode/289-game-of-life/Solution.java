@@ -5,14 +5,14 @@ class Solution {
         }
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                int liveNeighbors = getLiveNeighbors(board, i, j);
+                int lives = getLives(board, i, j);
                 if ((board[i][j] & 1) == 1) {
-                    if (liveNeighbors == 2 || liveNeighbors == 3) {
+                    if (lives == 2 || lives == 3) {
                         board[i][j] = 3;
                     }
                 }
                 else {
-                    if (liveNeighbors == 3) {
+                    if (lives == 3) {
                         board[i][j] = 2;
                     }
                 }
@@ -24,32 +24,32 @@ class Solution {
             }
         }
     }
-    private int getLiveNeighbors(int[][] nums, int row, int col) {
-        int liveNeighbors = 0;
-        if (row > 0 && (nums[row - 1][col] & 1) == 1) {
-            liveNeighbors++;
+    private int getLives(int[][] board, int row, int col) {
+        int lives = 0;
+        if (row > 0 && (board[row - 1][col] & 1) == 1) {
+            lives++;
         }
-        if (row > 0 && col > 0 && (nums[row - 1][col - 1] & 1) == 1) {
-            liveNeighbors++;
+        if (row > 0 && col < board[0].length - 1 && (board[row - 1][col + 1] & 1) == 1) {
+            lives++;
         }
-        if (col > 0 && (nums[row][col - 1] & 1) == 1) {
-            liveNeighbors++;
+        if (col < board[0].length - 1 && (board[row][col + 1] & 1) == 1) {
+            lives++;
         }
-        if (row < nums.length - 1 && col > 0 && (nums[row + 1][col - 1] & 1) == 1) {
-            liveNeighbors++;
+        if (row < board.length - 1 && col < board[0].length - 1 && (board[row + 1][col + 1] & 1) == 1) {
+            lives++;
         }
-        if (row < nums.length - 1 && (nums[row + 1][col] & 1) == 1) {
-            liveNeighbors++;
+        if (row < board.length - 1 && (board[row + 1][col] & 1) == 1) {
+            lives++;
         }
-        if (row < nums.length - 1 && col < nums[0].length - 1 && (nums[row + 1][col + 1] & 1) == 1) {
-            liveNeighbors++;
+        if (row < board.length - 1 && col > 0 && (board[row + 1][col - 1] & 1) == 1) {
+            lives++;
         }
-        if (col < nums[0].length - 1 && (nums[row][col + 1] & 1) == 1) {
-            liveNeighbors++;
+        if (col > 0 && (board[row][col - 1] & 1) == 1) {
+            lives++;
         }
-        if (row > 0 && col < nums[0].length - 1 && (nums[row - 1][col + 1] & 1) == 1) {
-            liveNeighbors++;
+        if (row > 0 && col > 0 && (board[row - 1][col - 1] & 1) == 1) {
+            lives++;
         }
-        return liveNeighbors;
+        return lives;
     }
 }

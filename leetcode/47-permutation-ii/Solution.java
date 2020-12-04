@@ -8,7 +8,6 @@ class Solution {
     private void recFind(List<List<Integer>> res, List<Integer> iList, boolean[] vis, int[] nums) {
         if (iList.size() == nums.length) {
             res.add(new ArrayList<Integer>(iList));
-            return;
         }
         for (int i = 0; i < nums.length; i++) {
             if (i > 0 && nums[i] == nums[i - 1] && vis[i - 1]) {

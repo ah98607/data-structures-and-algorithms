@@ -3,12 +3,8 @@ class Solution {
         if (amount == 0) {
             return 0;
         }
-        if (coins.length == 0) {
-            return -1;
-        }
         int[] dp = new int[amount + 1];
         Arrays.fill(dp, Integer.MAX_VALUE);
-        Arrays.sort(coins);
         dp[0] = 0;
         for (int i = 0; i <= amount; i++) {
             if (dp[i] != Integer.MAX_VALUE) {
@@ -17,12 +13,9 @@ class Solution {
                     if (temp > 0 && temp <= amount) {
                         dp[temp] = Math.min(dp[temp], dp[i] + 1);
                     }
-                    else {
-                        break;
-                    }
                 }
             }
         }
-        return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
+        return dp[amount] == Integer.MAX_VALUE ? - 1 : dp[amount];
     }
 }

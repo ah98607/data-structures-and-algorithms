@@ -11,14 +11,14 @@ class Solution {
         if (sList.size() == 4 || start == s.length()) {
             if (sList.size() == 4 && start == s.length()) {
                 StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < 4; i++) {
+                for (int i = 0; i < sList.size(); i++) {
                     sb.append((i == 0 ? "" : ".") + sList.get(i));
                 }
                 res.add(sb.toString());
             }
             return;
         }
-        for (int i = start; i < s.length() && i < start + 3; i++) {
+        for (int i = start; i < s.length(); i++) {
             String temp = s.substring(start, i + 1);
             if (valid(temp)) {
                 sList.add(temp);

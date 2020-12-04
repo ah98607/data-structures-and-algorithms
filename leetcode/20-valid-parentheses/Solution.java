@@ -5,11 +5,12 @@ class Solution {
         }
         Stack<Character> stack = new Stack<Character>();
         for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '{' || s.charAt(i) == '[' || s.charAt(i) == '(') {
-                stack.push(s.charAt(i));
+            char c = s.charAt(i);
+            if (c == '{' || c == '[' || c == '(') {
+                stack.push(c);
             }
-            else if (s.charAt(i) == '}' || s.charAt(i) == ']' || s.charAt(i) == ')') {
-                if (stack.isEmpty() || s.charAt(i) == '}' && stack.peek() != '{' || s.charAt(i) == ']' && stack.peek() != '[' || s.charAt(i) == ')' && stack.peek() != '(') {
+            else if (c == '}' || c == ']' || c == ')') {
+                if (stack.isEmpty() || c == '}' && stack.peek() != '{' || c == ']' && stack.peek() != '[' || c == ')' && stack.peek() != '(') {
                     return false;
                 }
                 stack.pop();

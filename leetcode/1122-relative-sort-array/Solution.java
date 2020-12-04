@@ -1,8 +1,5 @@
 class Solution {
     public int[] relativeSortArray(int[] arr1, int[] arr2) {
-        if (arr1.length == 0) {
-            return arr1;
-        }
         if (arr2.length == 0) {
             Arrays.sort(arr1);
             return arr1;
@@ -24,7 +21,7 @@ class Solution {
             freq.remove(arr2[i]);
         }
         for (Map.Entry<Integer, Integer> entry : freq.entrySet()) {
-            for (int i = 0; i < entry.getValue(); i++) {
+            for (int j = 0; j < entry.getValue(); j++) {
                 arr1[index++] = entry.getKey();
             }
         }

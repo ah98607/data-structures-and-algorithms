@@ -17,8 +17,8 @@ class Solution {
         int left = start + 1;
         int right = nums.length - 1;
         while (left < right) {
-            int sum = nums[left] + nums[right];
-            if (-nums[start] == sum) {
+            int temp = nums[left] + nums[right];
+            if (temp == -nums[start]) {
                 List<Integer> iList = new ArrayList<Integer>();
                 iList.add(nums[start]);
                 iList.add(nums[left]);
@@ -29,11 +29,11 @@ class Solution {
                     left++;
                 }
             }
-            else if (-nums[start] < sum) {
-                right--;
+            else if (temp < -nums[start]) {
+                left++;
             }
             else {
-                left++;
+                right--;
             }
         }
     }

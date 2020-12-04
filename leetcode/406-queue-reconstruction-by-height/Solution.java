@@ -24,8 +24,8 @@ class Solution {
             }
         });
         List<Person> tempRes = new ArrayList<Person>();
-        for (Person person : pList) {
-            tempRes.add(person.k, person);
+        for (int i = 0; i < pList.size(); i++) {
+            tempRes.add(pList.get(i).k, pList.get(i));
         }
         int[][] res = new int[tempRes.size()][2];
         for (int i = 0; i < tempRes.size(); i++) {

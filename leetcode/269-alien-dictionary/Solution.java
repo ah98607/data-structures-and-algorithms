@@ -45,8 +45,8 @@ class Solution {
             if (charToRemove == '0') {
                 return "";
             }
-            sb.append(charToRemove);
             chars.remove(charToRemove);
+            sb.append(charToRemove);
         }
         return sb.toString();
     }

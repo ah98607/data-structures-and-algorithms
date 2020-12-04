@@ -1,6 +1,9 @@
 class Solution {
     public int[] dailyTemperatures(int[] T) {
         int[] res = new int[T.length];
+        if (T.length < 2) {
+            return res;
+        }
         Stack<Integer> stack = new Stack<Integer>();
         for (int i = 0; i < T.length; i++) {
             while (!stack.isEmpty() && T[stack.peek()] < T[i]) {

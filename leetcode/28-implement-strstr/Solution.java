@@ -7,9 +7,9 @@ class Solution {
             return -1;
         }
         for (int i = 0; i <= haystack.length() - needle.length(); i++) {
-            if (haystack.charAt(i) == needle.charAt(0)) {
+            if (needle.charAt(0) == haystack.charAt(i)) {
                 for (int j = 0; j < needle.length(); j++) {
-                    if (haystack.charAt(i + j) != needle.charAt(j)) {
+                    if (needle.charAt(j) != haystack.charAt(i + j)) {
                         break;
                     }
                     if (j == needle.length() - 1) {

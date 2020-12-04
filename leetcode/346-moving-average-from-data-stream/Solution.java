@@ -1,7 +1,7 @@
 class MovingAverage {
     Queue<Integer> q;
-    int capacity;
     int sum;
+    int capacity;
     /** Initialize your data structure here. */
     public MovingAverage(int size) {
         q = new LinkedList<Integer>();

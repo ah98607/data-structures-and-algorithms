@@ -24,7 +24,7 @@ class Solution {
                 prev = cur;
                 cur = cur.next;
             }
-            else if (i < n) {
+            else {
                 ListNode temp = cur.next;
                 cur.next = prev;
                 prev = cur;

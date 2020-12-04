@@ -4,10 +4,10 @@ class Solution {
     }
     private int recFind(int[] nums, int left, int right) {
         int mid = left + (right - left) / 2;
-        if (mid > left && nums[mid - 1] > nums[mid]) {
+        if (mid > left && nums[mid] < nums[mid - 1]) {
             return recFind(nums, left, mid - 1);
         }
-        if (mid < right && nums[mid + 1] > nums[mid]) {
+        if (mid < right && nums[mid] < nums[mid + 1]) {
             return recFind(nums, mid + 1, right);
         }
         return mid;

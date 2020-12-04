@@ -13,7 +13,7 @@ class Solution {
             recFind(res, sb, left - 1, right);
             sb.deleteCharAt(sb.length() - 1);
         }
-        if (right > 0 && left < right) {
+        if (right > 0 && right > left) {
             sb.append(")");
             recFind(res, sb, left, right - 1);
             sb.deleteCharAt(sb.length() - 1);

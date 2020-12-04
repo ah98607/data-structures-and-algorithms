@@ -15,13 +15,11 @@
  */
 class Solution {
     public TreeNode convertBST(TreeNode root) {
-        if (root == null) {
-            return null;
-        }
-        int total = getSum(root);
+        int total = 0;
+        total = getSum(root);
         Stack<TreeNode> stack = new Stack<TreeNode>();
         TreeNode cur = root;
-        int prevSum = 0;
+        int preSum = 0;
         while (!stack.isEmpty() || cur != null) {
             while (cur != null) {
                 stack.push(cur);
@@ -29,8 +27,8 @@ class Solution {
             }
             cur = stack.pop();
             int temp = cur.val;
-            cur.val = total - prevSum;
-            prevSum += temp;
+            cur.val = total - preSum;
+            preSum += temp;
             cur = cur.right;
         }
         return root;
@@ -39,7 +37,6 @@ class Solution {
         if (node == null) {
             return 0;
         }
-        int sum = node.val;
-        return sum + getSum(node.left) + getSum(node.right);
+        return node.val + getSum(node.left) + getSum(node.right);
     }
 }

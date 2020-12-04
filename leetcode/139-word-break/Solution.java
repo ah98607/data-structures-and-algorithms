@@ -1,5 +1,8 @@
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
+        if (s.length() == 0) {
+            return true;
+        }
         Set<String> dict = new HashSet<String>(wordDict);
         boolean[] dp = new boolean[s.length() + 1];
         dp[0] = true;

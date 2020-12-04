@@ -19,15 +19,15 @@ class Solution {
         if (root == null) {
             return res;
         }
-        maxDepth(res, root);
+        recFind(res, root);
         return res;
     }
-    private int maxDepth(List<List<Integer>> res, TreeNode node) {
+    private int recFind(List<List<Integer>> res, TreeNode node) {
         if (node == null) {
             return -1;
         }
-        int maxDepth = 1 + Math.max(maxDepth(res, node.left), maxDepth(res, node.right));
-        if (maxDepth == res.size()) {
+        int maxDepth = 1 + Math.max(recFind(res, node.left), recFind(res, node.right));
+        if (maxDepth >= res.size()) {
             res.add(new ArrayList<Integer>());
         }
         res.get(maxDepth).add(node.val);

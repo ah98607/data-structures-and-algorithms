@@ -10,8 +10,8 @@ class Solution {
     private void recFind(int start, int len, int bin, List<String> sList) {
         maxLen = Math.max(maxLen, len);
         for (int i = start; i < sList.size(); i++) {
-            int newBin = bin;
             boolean shareChar = false;
+            int newBin = bin;
             for (int j = 0; j < sList.get(i).length(); j++) {
                 if (((newBin >> (sList.get(i).charAt(j) - 'a')) & 1) == 1) {
                     shareChar = true;

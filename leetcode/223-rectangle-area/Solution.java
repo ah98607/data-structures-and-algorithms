@@ -1,10 +1,10 @@
 class Solution {
     public int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
         int total = (C - A) * (D - B) + (G - E) * (H - F);
-        if (E > C || A > G || B > H || F > D) {
+        if (E > C || F > D || A > G || B > H) {
             return total;
         }
-        int[] x = {A, C, E, G};
+        int[] x = {A, E, C, G};
         int[] y = {B, D, F, H};
         Arrays.sort(x);
         Arrays.sort(y);

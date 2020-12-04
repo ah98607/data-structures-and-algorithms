@@ -10,16 +10,16 @@ class ListNode {
 }
 class LRUCache {
     Map<Integer, ListNode> map;
+    int capacity;
     ListNode dHead;
     ListNode dTail;
-    int capacity;
     public LRUCache(int capacity) {
         this.capacity = capacity;
+        map = new HashMap<Integer, ListNode>();
         dHead = new ListNode(0, 0);
         dTail = new ListNode(0, 0);
         dHead.next = dTail;
         dTail.prev = dHead;
-        map = new HashMap<Integer, ListNode>();
     }
     
     public int get(int key) {
