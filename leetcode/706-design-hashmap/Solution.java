@@ -26,23 +26,21 @@ class MyHashMap {
             prev = cur;
             cur = cur.next;
         }
-        if (prev != null) {
-            prev.next = new ListNode(key, value);
+        if (prev == null) {
+            arr[key % 100] = new ListNode(key, value);
         }
         else {
-            arr[key % 100] = new ListNode(key, value);
+            prev.next = new ListNode(key, value);
         }
     }
     
     /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
     public int get(int key) {
         ListNode cur = arr[key % 100];
-        ListNode prev = null;
         while (cur != null) {
             if (cur.key == key) {
                 return cur.val;
             }
-            prev = cur;
             cur = cur.next;
         }
         return -1;

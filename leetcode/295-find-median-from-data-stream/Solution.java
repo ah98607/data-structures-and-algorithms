@@ -15,16 +15,7 @@ class MedianFinder {
         if (q1.isEmpty() && q2.isEmpty()) {
             q1.offer(num);
         }
-        else if (q1.size() == q2.size() - 1) {
-            if (num > q2.peek()) {
-                q1.offer(q2.poll());
-                q2.offer(num);
-            }
-            else {
-                q1.offer(num);
-            }
-        }
-        else if (q1.size() - 1 == q2.size()) {
+        else if (q1.size() == q2.size() + 1) {
             if (num < q1.peek()) {
                 q2.offer(q1.poll());
                 q1.offer(num);
@@ -33,22 +24,31 @@ class MedianFinder {
                 q2.offer(num);
             }
         }
-        else {
+        else if (q1.size() + 1 == q2.size()) {
             if (num > q2.peek()) {
+                q1.offer(q2.poll());
                 q2.offer(num);
             }
             else {
                 q1.offer(num);
             }
         }
+        else {
+            if (num < q1.peek()) {
+                q1.offer(num);
+            }
+            else {
+                q2.offer(num);
+            }
+        }
     }
     
     public double findMedian() {
-        if (q1.size() == q2.size() - 1) {
-            return q2.peek();
-        }
-        if (q1.size() - 1 == q2.size()) {
+        if (q1.size() == q2.size() + 1) {
             return q1.peek();
+        }
+        else if (q1.size() + 1 == q2.size()) {
+            return q2.peek();
         }
         return (q1.peek() + q2.peek()) / 2.0;
     }

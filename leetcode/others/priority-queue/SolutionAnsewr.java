@@ -1,81 +1,73 @@
 class PriorityQueue {
     int[] nums;
     int size;
-    int capacity;
     public PriorityQueue(int capacity) {
-        this.capacity = capacity;
         nums = new int[capacity];
     }
     public void offer(int num) {
-        if (size == capacity) {
-            System.out.println("offer failed because of full");
-            return; // exception
+        if (size == nums.length) {
+            System.out.println("Full");
+            return;
         }
-        System.out.println("offer " + num);
         nums[size++] = num;
         trickleUp(size - 1);
     }
     public int poll() {
         if (size == 0) {
-            System.out.println("poll failed because empty");
-            return -1; // exception
+            System.out.println("Empty");
+            return -1;
         }
         int temp = nums[0];
         nums[0] = nums[size-- - 1];
         trickleDown(0);
-        System.out.println("poll: " + temp);
+        System.out.println("Poll -> " + temp);
         return temp;
     }
     public int peek() {
-        if (size == 0) {
-            System.out.println("peek failed because empty");
+        if (size == nums.length) {
+            System.out.println("Empty");
             return -1;
         }
-        System.out.println("peek: " + nums[0]);
+        System.out.println("Peek -> " + nums[0]);
         return nums[0];
     }
     public int size() {
         return size;
     }
     private void trickleUp(int cur) {
-        int temp = nums[cur];
-        while (cur > 0) {
+        while (cur != 0) {
             int parent = (cur - 1) / 2;
-            if (nums[parent] > temp) {
-                nums[cur] = nums[parent];
+            if (nums[cur] < nums[parent]) {
+                int temp = nums[parent];
+                nums[parent] = nums[cur];
+                nums[cur] = temp;
                 cur = parent;
             }
             else {
                 break;
             }
         }
-        nums[cur] = temp;
     }
     private void trickleDown(int cur) {
-        int temp = nums[cur];
         while (cur < size / 2) {
-            int left = 2 * cur + 1;
+            int left = cur * 2;
             int right = left + 1;
-            if (right < size && nums[right] < nums[left]) {
-                if (nums[right] < temp) {
-                    nums[cur] = nums[right];
-                    cur = right;
-                }
-                else {
-                    break;
-                }
+            if (nums[left] < nums[cur]) {
+                int temp = nums[left];
+                nums[left] = nums[cur];
+                nums[cur] = temp;
+                cur = left;
+            }
+            else if (right < size && nums[right] < nums[cur]) {
+                int temp = nums[right];
+                nums[right] = nums[cur];
+                nums[cur] = temp;
+                cur = right;
             }
             else {
-                if (nums[left] < temp) {
-                    nums[cur] = nums[left];
-                    cur = left;
-                }
-                else {
-                    break;
-                }
+                break;
             }
         }
-        nums[cur] = temp;
     }
 }
 public class Solution {
@@ -94,5 +86,8 @@ public class Solution {
         pq.peek();
         pq.offer(7);
         pq.offer(8);
+        while (pq.size() != 0) {
+            pq.poll();
+        }
     }
 }

@@ -14,13 +14,13 @@ class Solution {
         boolean[] vis = new boolean[accounts.size()];
         for (int i = 0; i < accounts.size(); i++) {
             if (!vis[i]) {
-                Set<String> emails = new TreeSet<String>();
-                q.offer(i);
                 vis[i] = true;
+                q.offer(i);
+                Set<String> emails = new TreeSet<String>();
                 while (!q.isEmpty()) {
-                    int id = q.poll();
-                    for (int j = 1; j < accounts.get(id).size(); j++) {
-                        String email = accounts.get(id).get(j);
+                    int tempId = q.poll();
+                    for (int j = 1; j < accounts.get(tempId).size(); j++) {
+                        String email = accounts.get(tempId).get(j);
                         emails.add(email);
                         for (Integer associatedId : e2ids.get(email)) {
                             if (!vis[associatedId]) {

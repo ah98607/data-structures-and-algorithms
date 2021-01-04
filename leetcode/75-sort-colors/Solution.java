@@ -13,14 +13,14 @@ class Solution {
             else if (nums[index] == 1) {
                 index++;
             }
-            else {
+            else if (nums[index] == 2) {
                 swap(nums, index, right--);
             }
         }
     }
-    private void swap(int[] nums, int x, int y) {
-        int temp = nums[x];
-        nums[x] = nums[y];
-        nums[y] = temp;
+    private void swap(int[] nums, int left, int right) {
+        int temp = nums[left];
+        nums[left] = nums[right];
+        nums[right] = temp;
     }
 }

@@ -26,8 +26,8 @@ class Solution {
         }
         Stack<Node> stack = new Stack<Node>();
         Node cur = root;
-        Node prev = null;
         Node head = null;
+        Node prev = null;
         while (!stack.isEmpty() || cur != null) {
             while (cur != null) {
                 stack.push(cur);

@@ -19,15 +19,15 @@ class Solution {
         if (root == null) {
             return 0;
         }
-        getNeeds(root);
+        recFind(root);
         return moves;
     }
-    private int getNeeds(TreeNode node) {
+    private int recFind(TreeNode node) {
         if (node == null) {
             return 0;
         }
-        int leftRes = getNeeds(node.left);
-        int rightRes = getNeeds(node.right);
+        int leftRes = recFind(node.left);
+        int rightRes = recFind(node.right);
         moves += Math.abs(leftRes) + Math.abs(rightRes);
         return node.val - 1 + leftRes + rightRes;
     }

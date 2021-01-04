@@ -1,9 +1,9 @@
 class ListNode {
     int key;
     int val;
+    int freq;
     ListNode prev;
     ListNode next;
-    int freq;
     public ListNode(int key, int val) {
         this.key = key;
         this.val = val;
@@ -29,8 +29,8 @@ class LFUCache {
             return -1;
         }
         ListNode temp = map.get(key);
-        remove(temp);
         temp.freq++;
+        remove(temp);
         add(temp);
         return temp.val;
     }
@@ -59,8 +59,8 @@ class LFUCache {
         while (cur != dTail && cur.freq <= node.freq) {
             cur = cur.next;
         }
-        cur.prev.next = node;
         node.prev = cur.prev;
+        cur.prev.next = node;
         node.next = cur;
         cur.prev = node;
     }

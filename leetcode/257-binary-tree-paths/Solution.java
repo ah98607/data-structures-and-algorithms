@@ -19,10 +19,10 @@ class Solution {
         if (root == null) {
             return res;
         }
-        recFind(res, "", root);
+        recFind(res, root, "");
         return res;
     }
-    private void recFind(List<String> res, String s, TreeNode node) {
+    private void recFind(List<String> res, TreeNode node, String s) {
         if (node == null) {
             return;
         }
@@ -30,7 +30,7 @@ class Solution {
         if (node.left == null && node.right == null) {
             res.add(s);
         }
-        recFind(res, s, node.left);
-        recFind(res, s, node.right);
+        recFind(res, node.left, s);
+        recFind(res, node.right, s);
     }
 }

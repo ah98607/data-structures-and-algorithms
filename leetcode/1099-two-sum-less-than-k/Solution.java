@@ -1,17 +1,17 @@
 class Solution {
-    public int twoSumLessThanK(int[] A, int K) {
-        if (A.length < 2) {
+    public int twoSumLessThanK(int[] nums, int k) {
+        if (nums.length < 2) {
             return -1;
         }
-        Arrays.sort(A);
+        Arrays.sort(nums);
         int left = 0;
-        int right = A.length - 1;
+        int right = nums.length - 1;
         int sum = -1;
         while (left < right) {
-            int temp = A[left] + A[right];
-            if (temp < K) {
-                sum = Math.max(sum, temp);
+            int temp = nums[left] + nums[right];
+            if (temp < k) {
                 left++;
+                sum = Math.max(sum, temp);
             }
             else {
                 right--;

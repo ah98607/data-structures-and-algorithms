@@ -19,12 +19,12 @@ class Solution {
             if (oCur.val < oPrev.val) {
                 ListNode iCur = head;
                 ListNode iPrev = null;
-                while (iCur.val < oCur.val) {
+                while (iCur != oCur && iCur.val < oCur.val) {
                     iPrev = iCur;
                     iCur = iCur.next;
                 }
-                ListNode temp = oCur.next;
                 oPrev.next = oCur.next;
+                ListNode temp = oCur.next;
                 if (iPrev != null) {
                     iPrev.next = oCur;
                 }

@@ -13,7 +13,7 @@ class Solution {
         int maxLen = 1;
         for (int i = 1; i < words.length; i++) {
             for (int j = 0; j < i; j++) {
-                if (predecessor(words[j], words[i])) {
+                if (successor(words[i], words[j])) {
                     dp[i] = Math.max(dp[i], dp[j] + 1);
                 }
             }
@@ -21,13 +21,12 @@ class Solution {
         }
         return maxLen;
     }
-    private boolean predecessor(String s1, String s2) {
-        if (s1.length() != s2.length() - 1) {
-            return false;
-        }
-        for (int i = 0; i < s2.length(); i++) {
-            if (s1.equals(s2.substring(0, i) + s2.substring(i + 1))) {
-                return true;
+    private boolean successor(String s1, String s2) {
+        if (s1.length() == s2.length() + 1) {
+            for (int i = 0; i < s1.length(); i++) {
+                if (s2.equals(s1.substring(0, i) + s1.substring(i + 1))) {
+                    return true;
+                }
             }
         }
         return false;

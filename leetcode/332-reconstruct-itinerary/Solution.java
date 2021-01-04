@@ -1,6 +1,9 @@
 class Solution {
     public List<String> findItinerary(List<List<String>> tickets) {
         List<String> res = new ArrayList<String>();
+        if (tickets.size() == 0) {
+            return res;
+        }
         Map<String, Queue<String>> adj = new HashMap<String, Queue<String>>();
         for (List<String> ticket : tickets) {
             String from = ticket.get(0);

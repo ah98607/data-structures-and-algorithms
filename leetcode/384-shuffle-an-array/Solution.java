@@ -11,7 +11,7 @@ class Solution {
     /** Resets the array to its original configuration and return it. */
     public int[] reset() {
         int[] nums = new int[ori.length];
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = 0; i < ori.length; i++) {
             nums[i] = ori[i];
         }
         return nums;
@@ -24,10 +24,10 @@ class Solution {
         }
         return cp;
     }
-    private void swap(int[] nums, int x, int y) {
-        int temp = nums[x];
-        nums[x] = nums[y];
-        nums[y] = temp;
+    private void swap(int[] nums, int left, int right) {
+        int temp = nums[left];
+        nums[left] = nums[right];
+        nums[right] = temp;
     }
 }
 

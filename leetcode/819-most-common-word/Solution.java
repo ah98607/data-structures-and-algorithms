@@ -7,18 +7,18 @@ class Solution {
             ban.add(banned[i]);
         }
         Map<String, Integer> freq = new HashMap<String, Integer>();
-        paragraph = paragraph.toLowerCase();
         int start = 0;
+        paragraph = paragraph.toLowerCase();
         for (int i = 0; i < paragraph.length(); i++) {
             if (!alphabetic(paragraph.charAt(i))) {
-                add(paragraph.substring(start, i), freq, ban);
+                addToMap(paragraph.substring(start, i), freq, ban);
                 start = i + 1;
             }
         }
-        add(paragraph.substring(start, paragraph.length()), freq, ban);
+        addToMap(paragraph.substring(start, paragraph.length()), freq, ban);
         return res;
     }
-    private void add(String s, Map<String, Integer> freq, Set<String> ban) {
+    private void addToMap(String s, Map<String, Integer> freq, Set<String> ban) {
         if (s.length() == 0 || ban.contains(s)) {
             return;
         }

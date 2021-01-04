@@ -5,16 +5,16 @@ class Solution {
         for (int i = 0; i < M.length; i++) {
             if (!vis[i]) {
                 res++;
-                recFind(i, M, vis);
+                recFind(M, i, vis);
             }
         }
         return res;
     }
-    private void recFind(int cur, int[][] M, boolean[] vis) {
+    private void recFind(int[][] M, int cur, boolean[] vis) {
         vis[cur] = true;
         for (int i = 0; i < M[cur].length; i++) {
             if (!vis[i] && M[cur][i] == 1) {
-                recFind(i, M, vis);
+                recFind(M, i, vis);
             }
         }
     }

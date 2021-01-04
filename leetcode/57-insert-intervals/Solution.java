@@ -13,14 +13,14 @@ class Solution {
             iList.add(new Interval(intervals[i][0], intervals[i][1]));
         }
         int index = 0;
-        while (index < iList.size() && iList.get(index).start <= newInterval[0]) {
+        while (index < iList.size() && iList.get(index).start < newInterval[0]) {
             index++;
         }
         iList.add(index, new Interval(newInterval[0], newInterval[1]));
-        int prev = 0;
         List<Interval> merge = new ArrayList<Interval>();
+        int prev = 0;
         for (int i = 1; i < iList.size(); i++) {
-            if (iList.get(i).start <= iList.get(prev).end) {
+            if (iList.get(prev).end >= iList.get(i).start) {
                 iList.get(prev).end = Math.max(iList.get(prev).end, iList.get(i).end);
             }
             else {

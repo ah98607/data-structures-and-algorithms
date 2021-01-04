@@ -7,8 +7,8 @@ class Solution {
         Arrays.fill(prime, true);
         for (int i = 2; i < n; i++) {
             if (prime[i]) {
-                for (int j = i + i; j < n; j += i) {
-                    prime[j] = false;
+                for (int j = 1; i + i * j < n; j++) {
+                    prime[i + i * j] = false;
                 }
             }
         }

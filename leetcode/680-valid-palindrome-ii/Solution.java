@@ -13,7 +13,7 @@ class Solution {
             }
             else {
                 diff++;
-                if (diff == 2) {
+                if (diff > 1) {
                     return false;
                 }
                 if (right - left < 2 || s.charAt(left + 1) == s.charAt(right) && s.charAt(left + 2) == s.charAt(right - 1)) {
@@ -27,6 +27,6 @@ class Solution {
                 }
             }
         }
-        return diff <= 1;
+        return true;
     }
 }

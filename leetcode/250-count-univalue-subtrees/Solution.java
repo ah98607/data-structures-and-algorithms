@@ -26,25 +26,25 @@ class Solution {
         if (node == null) {
             return false;
         }
-        boolean leftRes = recFind(node.left);
-        boolean rightRes = recFind(node.right);
         if (node.left == null && node.right == null) {
             res++;
             return true;
         }
-        else if (node.left != null && node.right != null) {
+        boolean leftRes = recFind(node.left);
+        boolean rightRes = recFind(node.right);
+        if (node.left != null && node.right != null) {
             if (node.val == node.left.val && node.val == node.right.val && leftRes && rightRes) {
                 res++;
                 return true;
             }
-        }   
+        }
         else if (node.left != null) {
             if (node.val == node.left.val && leftRes) {
                 res++;
                 return true;
             }
         }
-        else if (node.right != null) {
+        else {
             if (node.val == node.right.val && rightRes) {
                 res++;
                 return true;

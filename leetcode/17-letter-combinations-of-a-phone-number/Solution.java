@@ -5,18 +5,18 @@ class Solution {
         if (digits.length() == 0) {
             return res;
         }
-        recFind(res, new StringBuilder(), digits, chars);
+        recFind(res, new StringBuilder(), digits);
         return res;
     }
-    private void recFind(List<String> res, StringBuilder sb, String digits, String[] chars) {
-        if (digits.length() == 0) {
+    private void recFind(List<String> res, StringBuilder sb, String s) {
+        if (s.length() == 0) {
             res.add(sb.toString());
             return;
         }
-        int index = digits.charAt(0) - '0';
+        int index = s.charAt(0) - '0';
         for (int i = 0; i < chars[index].length(); i++) {
             sb.append(chars[index].charAt(i));
-            recFind(res, sb, digits.substring(1), chars);
+            recFind(res, sb, s.substring(1));
             sb.deleteCharAt(sb.length() - 1);
         }
     }

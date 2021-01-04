@@ -23,11 +23,11 @@ class Solution {
             }
             else {
                 join.add(new Interval(Math.max(A[indexA][0], B[indexB][0]), Math.min(A[indexA][1], B[indexB][1])));
-                if (A[indexA][1] > B[indexB][1]) {
-                    indexB++;
+                if (A[indexA][1] < B[indexB][1]) {
+                    indexA++;
                 }
                 else {
-                    indexA++;
+                    indexB++;
                 }
             }
         }

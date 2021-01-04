@@ -13,11 +13,11 @@ class Solution {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode cur = head;
         ListNode headA = null;
-        ListNode prevA = null;
         ListNode headB = null;
+        ListNode prevA = null;
         ListNode prevB = null;
+        ListNode cur = head;
         while (cur != null) {
             if (cur.val < x) {
                 if (prevA != null) {

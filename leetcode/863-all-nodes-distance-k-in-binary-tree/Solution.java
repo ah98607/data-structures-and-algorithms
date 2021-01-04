@@ -42,20 +42,20 @@ class Solution {
             adj.put(node, new HashSet<TreeNode>());
         }
         if (node.left != null) {
-            adj.get(node).add(node.left);
             if (!adj.containsKey(node.left)) {
                 adj.put(node.left, new HashSet<TreeNode>());
             }
+            adj.get(node).add(node.left);
             adj.get(node.left).add(node);
-            recFind(node.left, adj);
         }
         if (node.right != null) {
-            adj.get(node).add(node.right);
             if (!adj.containsKey(node.right)) {
                 adj.put(node.right, new HashSet<TreeNode>());
             }
+            adj.get(node).add(node.right);
             adj.get(node.right).add(node);
-            recFind(node.right, adj);
         }
+        recFind(node.left, adj);
+        recFind(node.right, adj);
     }
 }

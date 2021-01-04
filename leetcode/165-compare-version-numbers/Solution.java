@@ -6,11 +6,11 @@ class Solution {
         int index2 = 0;
         while (index1 < v1.length && index2 < v2.length) {
             int diff = Integer.parseInt(v1[index1++]) - Integer.parseInt(v2[index2++]);
-            if (diff < 0) {
-                return -1;
-            }
             if (diff > 0) {
                 return 1;
+            }
+            else if (diff < 0) {
+                return -1;
             }
         }
         while (index1 < v1.length) {

@@ -25,10 +25,10 @@ class RandomizedSet {
             return false;
         }
         int index = map.get(val);
-        map.put(iList.get(iList.size() - 1), index);
         iList.set(index, iList.get(iList.size() - 1));
-        map.remove(val);
+        map.put(iList.get(index), index);
         iList.remove(iList.size() - 1);
+        map.remove(val);
         return true;
     }
     

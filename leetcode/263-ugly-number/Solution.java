@@ -1,6 +1,6 @@
 class Solution {
     public boolean isUgly(int num) {
-        if (num <= 0) {
+        if (num < 1) {
             return false;
         }
         while (num > 1) {

@@ -9,17 +9,17 @@ class Solution {
                     }
                 }));
             }
-            map.get(items[i][0]).add(items[i][1]);
+            map.get(items[i][0]).offer(items[i][1]);
         }
         int[][] res = new int[map.size()][2];
         int index = 0;
         for (Map.Entry<Integer, Queue<Integer>> entry : map.entrySet()) {
-            int total = 0;
+            int sum = 0;
             for (int i = 0; i < 5; i++) {
-                total += entry.getValue().poll();
+                sum += entry.getValue().poll();
             }
             res[index][0] = entry.getKey();
-            res[index++][1] = total / 5;
+            res[index++][1] = sum / 5;
         }
         return res;
     }

@@ -10,7 +10,7 @@ class Solution {
                 start = i + 1;
             }
         }
-        if (start != s.length()) {
+        if (s.length() != start) {
             len = s.length() - start;
         }
         return len;

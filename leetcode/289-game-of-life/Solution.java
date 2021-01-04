@@ -8,19 +8,19 @@ class Solution {
                 int lives = getLives(board, i, j);
                 if ((board[i][j] & 1) == 1) {
                     if (lives == 2 || lives == 3) {
-                        board[i][j] = 3;
+                        board[i][j] |= 2;
                     }
                 }
                 else {
                     if (lives == 3) {
-                        board[i][j] = 2;
+                        board[i][j] |= 2;
                     }
                 }
             }
         }
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                board[i][j] = board[i][j] >> 1;
+                board[i][j] >>= 1;
             }
         }
     }
@@ -38,7 +38,7 @@ class Solution {
         if (row < board.length - 1 && col < board[0].length - 1 && (board[row + 1][col + 1] & 1) == 1) {
             lives++;
         }
-        if (row < board.length - 1 && (board[row + 1][col] & 1) == 1) {
+        if (row < board.length - 1 && (board[row + 1][col]& 1) == 1) {
             lives++;
         }
         if (row < board.length - 1 && col > 0 && (board[row + 1][col - 1] & 1) == 1) {

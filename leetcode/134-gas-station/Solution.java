@@ -9,8 +9,8 @@ class Solution {
             totalCost += cost[i];
             net += gas[i] - cost[i];
             if (net < 0) {
-                start = i + 1;
                 net = 0;
+                start = i + 1;
             }
         }
         if (totalGas >= totalCost) {

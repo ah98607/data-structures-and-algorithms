@@ -15,11 +15,10 @@ class Solution {
         vis.add(startUrl);
         while (!q.isEmpty()) {
             String temp = q.poll();
-            String tempHost = getHost(temp);
             res.add(temp);
             List<String> nextUrls = htmlParser.getUrls(temp);
             for (String nextUrl : nextUrls) {
-                if (!vis.contains(nextUrl) && getHost(nextUrl).equals(tempHost)) {
+                if (!vis.contains(nextUrl) && getHost(nextUrl).equals(getHost(temp))) {
                     vis.add(nextUrl);
                     q.offer(nextUrl);
                 }
@@ -27,11 +26,13 @@ class Solution {
         }
         return res;
     }
-    private String getHost(String s) {
+    private String getHost(String url) {
         int index = 7;
-        while (index < s.length() && s.charAt(index) != '/') {
-            index++;
+        StringBuilder sb = new StringBuilder();
+        while (index < url.length() && url.charAt(index) != '/') {
+            sb.append(url.charAt(index++));
+            
         }
-        return s.substring(7, index);
+        return sb.toString();
     }
 }

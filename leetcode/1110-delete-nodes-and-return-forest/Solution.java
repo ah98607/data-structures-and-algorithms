@@ -16,44 +16,43 @@
 class Solution {
     public List<TreeNode> delNodes(TreeNode root, int[] to_delete) {
         List<TreeNode> res = new ArrayList<TreeNode>();
-        if (root == null) {
-            return res;
-        }
-        Set<Integer> dels = new HashSet<Integer>();
+        Set<Integer> numsDel = new HashSet<Integer>();
         for (int i = 0; i < to_delete.length; i++) {
-            dels.add(to_delete[i]);
+            numsDel.add(to_delete[i]);
         }
         Map<TreeNode, TreeNode> parents = new HashMap<TreeNode, TreeNode>();
-        recFind(root, parents, null);
-        if (!dels.contains(root.val)) {
+        recFind(root, null, parents);
+        if (!numsDel.contains(root.val)) {
             res.add(root);
         }
         for (Map.Entry<TreeNode, TreeNode> entry : parents.entrySet()) {
-            if (dels.contains(entry.getKey().val)) {
-                if (entry.getValue() != null) {
-                    if (entry.getKey() == entry.getValue().left) {
-                        entry.getValue().left = null;
+            TreeNode node = entry.getKey();
+            if (numsDel.contains(node.val)) {
+                TreeNode parent = entry.getValue();
+                if (parent != null) {
+                    if (node == parent.left) {
+                        parent.left = null;
                     }
                     else {
-                        entry.getValue().right = null;
+                        parent.right = null;
                     }
                 }
-                if (entry.getKey().left != null && !dels.contains(entry.getKey().left.val)) {
-                    res.add(entry.getKey().left);
+                if (node.left != null && !numsDel.contains(node.left.val)) {
+                    res.add(node.left);
                 }
-                if (entry.getKey().right != null && !dels.contains(entry.getKey().right.val)) {
-                    res.add(entry.getKey().right);
+                if (node.right != null && !numsDel.contains(node.right.val)) {
+                    res.add(node.right);
                 }
             }
         }
         return res;
     }
-    private void recFind(TreeNode node, Map<TreeNode, TreeNode> parents, TreeNode parent) {
+    private void recFind(TreeNode node, TreeNode parent, Map<TreeNode, TreeNode> parents) {
         if (node == null) {
             return;
         }
         parents.put(node, parent);
-        recFind(node.left, parents, node);
-        recFind(node.right, parents, node);
+        recFind(node.left, node, parents);
+        recFind(node.right, node, parents);
     }
 }

@@ -1,102 +1,89 @@
 class Node {
-    String name;
-    Map<String, Node> children;
     boolean isFile;
     String content;
-    public Node(String name, String content) {
-        this.name = name;
+    Map<String, Node> children;
+    public Node(String content) {
         this.content = content;
         isFile = true;
     }
-    public Node(String name) {
-        this.name = name;
+    public Node() {
         children = new TreeMap<String, Node>();
     }
 }
 class FileSystem {
     Node root;
     public FileSystem() {
-        root = new Node("");
+        root = new Node();
     }
     
     public List<String> ls(String path) {
         List<String> res = new ArrayList<String>();
         if (path.equals("/")) {
             for (Map.Entry<String, Node> entry : root.children.entrySet()) {
-                res.add(entry.getValue().name);
+                res.add(entry.getKey());
             }
             return res;
         }
+        int start = 1;
         Node cur = root;
-        int start = 0;
-        for (int i = 0; i < path.length(); i++) {
+        for (int i = 1; i < path.length(); i++) {
             if (path.charAt(i) == '/') {
-                if (i != start) {
-                    String temp = path.substring(start, i);
-                    if (cur.children.containsKey(temp)) {
-                        cur = cur.children.get(temp);
-                    }
-                    else {
-                        return res;
-                    }
-                }
+                String temp = path.substring(start, i);
+                cur = cur.children.get(temp);
                 start = i + 1;
             }
         }
         String temp = path.substring(start, path.length());
-        if (cur.children.containsKey(temp)) {
-            cur = cur.children.get(temp);
-            if (cur.isFile) {
-                res.add(cur.name);
-            }
-            else {
-                for (Map.Entry<String, Node> entry : cur.children.entrySet()) {
-                    res.add(entry.getValue().name);
-                }
+        cur = cur.children.get(temp);
+        if (cur.isFile) {
+            res.add(temp);
+        }
+        else {
+            for (Map.Entry<String, Node> entry : cur.children.entrySet()) {
+                res.add(entry.getKey());
             }
         }
         return res;
     }
     
     public void mkdir(String path) {
+        if (path.equals("/")) {
+            return;
+        }
+        int start = 1;
         Node cur = root;
-        int start = 0;
-        for (int i = 0; i < path.length(); i++) {
+        for (int i = 1; i < path.length(); i++) {
             if (path.charAt(i) == '/') {
-                if (i != start) {
-                    String temp = path.substring(start, i);
-                    if (!cur.children.containsKey(temp)) {
-                        cur.children.put(temp, new Node(temp));
-                    }
-                    cur = cur.children.get(temp);
+                String temp = path.substring(start, i);
+                if (!cur.children.containsKey(temp)) {
+                    cur.children.put(temp, new Node());
                 }
+                cur = cur.children.get(temp);
                 start = i + 1;
             }
         }
         String temp = path.substring(start, path.length());
         if (!cur.children.containsKey(temp)) {
-            cur.children.put(temp, new Node(temp));
+            cur.children.put(temp, new Node());
         }
     }
     
     public void addContentToFile(String filePath, String content) {
+        int start = 1;
         Node cur = root;
-        int start = 0;
-        for (int i = 0; i < filePath.length(); i++) {
+        for (int i = 1; i < filePath.length(); i++) {
             if (filePath.charAt(i) == '/') {
-                if (i != start) {
-                    String temp = filePath.substring(start, i);
-                    if (!cur.children.containsKey(temp)) {
-                        cur.children.put(temp, new Node(temp));
-                    }
-                    cur = cur.children.get(temp);
+                String temp = filePath.substring(start, i);
+                if (!cur.children.containsKey(temp)) {
+                    cur.children.put(temp, new Node());
                 }
+                cur = cur.children.get(temp);
                 start = i + 1;
             }
         }
         String temp = filePath.substring(start, filePath.length());
         if (!cur.children.containsKey(temp)) {
-            cur.children.put(temp, new Node(temp, content));
+            cur.children.put(temp, new Node(content));
         }
         else {
             cur.children.get(temp).content += content;
@@ -104,25 +91,18 @@ class FileSystem {
     }
     
     public String readContentFromFile(String filePath) {
+        int start = 1;
         Node cur = root;
-        int start = 0;
-        for (int i = 0; i < filePath.length(); i++) {
+        for (int i = 1; i < filePath.length(); i++) {
             if (filePath.charAt(i) == '/') {
-                if (i != start) {
-                    String temp = filePath.substring(start, i);
-                    if (!cur.children.containsKey(temp)) {
-                        return "";
-                    }
-                    cur = cur.children.get(temp);
-                }
+                String temp = filePath.substring(start, i);
+                cur = cur.children.get(temp);
                 start = i + 1;
             }
         }
         String temp = filePath.substring(start, filePath.length());
-        if (cur.children.containsKey(temp)) {
-            return cur.children.get(temp).content;
-        }
-        return "";
+        cur = cur.children.get(temp);
+        return cur.content;
     }
 }
 

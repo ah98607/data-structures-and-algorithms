@@ -19,7 +19,7 @@ class Solution {
             return left - 1;
         }
         if (x < right * right) {
-            return left;
+            return right - 1;
         }
         return right;
     }

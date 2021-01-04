@@ -8,11 +8,11 @@ class Solution {
         return res;
     }
     private void recFind(List<String> res, List<String> sList, int start, String s) {
-        if (sList.size() == 4 || start == s.length()) {
-            if (sList.size() == 4 && start == s.length()) {
+        if (start >= s.length() || sList.size() == 4) {
+            if (start == s.length() && sList.size() == 4) {
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < sList.size(); i++) {
-                    sb.append((i == 0 ? "" : ".") + sList.get(i));
+                    sb.append((sb.length() == 0 ? "" : ".") + sList.get(i));
                 }
                 res.add(sb.toString());
             }

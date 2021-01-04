@@ -7,7 +7,7 @@ class Solution {
         int start = 0;
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] != nums[i - 1] + 1) {
-                if (i - 1 != start) {
+                if (i != start + 1) {
                     res.add(nums[start] + "->" + nums[i - 1]);
                 }
                 else {
@@ -16,7 +16,7 @@ class Solution {
                 start = i;
             }
         }
-        if (nums.length - 1 != start) {
+        if (nums.length != start + 1) {
             res.add(nums[start] + "->" + nums[nums.length - 1]);
         }
         else {

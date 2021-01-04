@@ -19,17 +19,17 @@ class Solution {
         pq.offer(new Elem(0, 0, matrix[0][0]));
         vis[0][0] = true;
         Elem temp = null;
-        while (k > 0) {
+        while (k > 0 && !pq.isEmpty()) {
             temp = pq.poll();
             int r = temp.row;
             int c = temp.col;
             if (r < matrix.length - 1 && !vis[r + 1][c]) {
-                pq.offer(new Elem(r + 1, c, matrix[r + 1][c]));
                 vis[r + 1][c] = true;
+                pq.offer(new Elem(r + 1, c, matrix[r + 1][c]));
             }
             if (c < matrix[0].length - 1 && !vis[r][c + 1]) {
-                pq.offer(new Elem(r, c + 1, matrix[r][c + 1]));
                 vis[r][c + 1] = true;
+                pq.offer(new Elem(r, c + 1, matrix[r][c + 1]));
             }
             k--;
         }

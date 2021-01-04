@@ -15,9 +15,6 @@
  */
 class Solution {
     public void recoverTree(TreeNode root) {
-        if (root == null) {
-            return;
-        }
         Stack<TreeNode> stack = new Stack<TreeNode>();
         TreeNode cur = root;
         TreeNode prev = null;

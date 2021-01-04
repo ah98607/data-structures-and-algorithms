@@ -1,6 +1,6 @@
 class Solution {
     public boolean canConstruct(String ransomNote, String magazine) {
-        if (magazine.length() < ransomNote.length()) {
+        if (ransomNote.length() > magazine.length()) {
             return false;
         }
         int[] freq = new int[26];

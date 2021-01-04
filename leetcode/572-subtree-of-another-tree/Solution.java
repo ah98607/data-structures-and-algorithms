@@ -27,12 +27,6 @@ class Solution {
         return isSubtree(s.left, t) || isSubtree(s.right, t);
     }
     private boolean sameTree(TreeNode n1, TreeNode n2) {
-        if (n1 == null && n2 == null) {
-            return true;
-        }
-        if (n1 != null && n2 != null && n1.val == n2.val && sameTree(n1.left, n2.left) && sameTree(n1.right, n2.right)) {
-            return true;
-        }
-        return false;
+        return n1 == null && n2 == null || n1 != null && n2 != null && n1.val == n2.val && sameTree(n1.left, n2.left) && sameTree(n1.right, n2.right);
     }
 }

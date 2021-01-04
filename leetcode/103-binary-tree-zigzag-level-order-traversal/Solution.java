@@ -27,19 +27,18 @@ class Solution {
             List<Integer> iList = new ArrayList<Integer>();
             for (int i = 0; i < qSize; i++) {
                 TreeNode temp = q.poll();
-                iList.add(temp.val);
                 if (temp.left != null) {
                     q.offer(temp.left);
                 }
                 if (temp.right != null) {
                     q.offer(temp.right);
                 }
+                iList.add(temp.val);
             }
-            if ((level & 1) == 1) {
+            if ((level++ & 1) != 0) {
                 Collections.reverse(iList);
             }
             res.add(iList);
-            level++;
         }
         return res;
     }

@@ -12,7 +12,10 @@ class Solution {
                 tasksWithMaxFreq++;
             }
         }
-        int temp = (maxFreq - 1) * (n + 1) + tasksWithMaxFreq;
-        return Math.max(temp, tasks.length);
+        int temp = (n + 1) * (maxFreq - 1) + tasksWithMaxFreq;
+        if (temp < tasks.length) {
+            return tasks.length;
+        }
+        return temp;
     }
 }

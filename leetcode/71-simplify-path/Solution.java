@@ -1,36 +1,33 @@
 class Solution {
     public String simplifyPath(String path) {
-        if (path.length() == 0) {
-            return "/";
-        }
-        List<String> fields = new ArrayList<String>();
+        List<String> sList = new ArrayList<String>();
         int start = 0;
         for (int i = 0; i < path.length(); i++) {
             if (path.charAt(i) == '/') {
-                add(path.substring(start, i), fields);
+                addToList(path.substring(start, i), sList);
                 start = i + 1;
             }
         }
-        add(path.substring(start, path.length()), fields);
+        addToList(path.substring(start, path.length()), sList);
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < fields.size(); i++) {
-            sb.append("/" + fields.get(i));
+        for (int i = 0; i < sList.size(); i++) {
+            sb.append("/" + sList.get(i));
         }
         if (sb.length() == 0) {
             return "/";
         }
         return sb.toString();
     }
-    private void add(String s, List<String> fields) {
+    private void addToList(String s, List<String> sList) {
         if (s.length() == 0 || s.equals(".")) {
             return;
         }
         if (s.equals("..")) {
-            if (!fields.isEmpty()) {
-                fields.remove(fields.size() - 1);
+            if (!sList.isEmpty()) {
+                sList.remove(sList.size() - 1);
             }
             return;
         }
-        fields.add(s);
+        sList.add(s);
     }
 }

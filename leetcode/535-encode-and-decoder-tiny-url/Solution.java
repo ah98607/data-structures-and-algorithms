@@ -1,15 +1,15 @@
 public class Codec {
     final String base = "http://tinyurl.com/";
     final String chars = "1234567890QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
+    Random r;
     Map<String, String> l2s;
     Map<String, String> s2l;
-    Random r;
     // Encodes a URL to a shortened URL.
     public String encode(String longUrl) {
-        if (l2s == null) {
+        if (r == null) {
+            r = new Random();
             l2s = new HashMap<String, String>();
             s2l = new HashMap<String, String>();
-            r = new Random();
         }
         if (l2s.containsKey(longUrl)) {
             return base + l2s.get(longUrl);

@@ -6,21 +6,13 @@ class Solution {
         }
         Map<String, Integer> freq = new HashMap<String, Integer>();
         for (int i = 0; i < cpdomains.length; i++) {
-            int start = 0;
             int count = 0;
             for (int j = 0; j < cpdomains[i].length(); j++) {
                 if (cpdomains[i].charAt(j) == ' ' || cpdomains[i].charAt(j) == '.') {
                     if (cpdomains[i].charAt(j) == ' ') {
-                        count = Integer.parseInt(cpdomains[i].substring(start, j));
+                        count = Integer.parseInt(cpdomains[i].substring(0, j));
                     }
-                    String temp = cpdomains[i].substring(j + 1);
-                    if (!freq.containsKey(temp)) {
-                        freq.put(temp, count);
-                    }
-                    else {
-                        freq.put(temp, count + freq.get(temp));
-                    }
-                    start = j + 1;
+                    addToMap(count, cpdomains[i].substring(j + 1), freq);
                 }
             }
         }
@@ -28,5 +20,13 @@ class Solution {
             res.add(entry.getValue() + " " + entry.getKey());
         }
         return res;
+    }
+    private void addToMap(int count, String s, Map<String, Integer> freq) {
+        if (!freq.containsKey(s)) {
+            freq.put(s, count);
+        }
+        else {
+            freq.put(s, count + freq.get(s));
+        }
     }
 }

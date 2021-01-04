@@ -13,11 +13,11 @@ class Solution {
         reverse(s, start, s.length - 1);
         reverse(s, 0, s.length - 1);
     }
-    private void reverse(char[] arr, int left, int right) {
+    private void reverse(char[] s, int left, int right) {
         while (left < right) {
-            char temp = arr[left];
-            arr[left++] = arr[right];
-            arr[right--] = temp;
+            char temp = s[left];
+            s[left++] = s[right];
+            s[right--] = temp;
         }
     }
 }

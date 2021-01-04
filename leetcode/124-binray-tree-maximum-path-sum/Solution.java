@@ -29,7 +29,7 @@ class Solution {
         }
         int leftRes = recFind(node.left);
         int rightRes = recFind(node.right);
-        max = Math.max(max, node.val + Math.max(0, leftRes) + Math.max(0, rightRes));
+        max = Math.max(max, node.val + Math.max(leftRes, 0) + Math.max(rightRes, 0));
         return node.val + Math.max(0, Math.max(leftRes, rightRes));
     }
 }

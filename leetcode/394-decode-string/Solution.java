@@ -13,13 +13,13 @@ class Solution {
                 }
                 index++;
                 int start = index;
-                int braces = 1;
-                while (braces > 0) {
+                int brackets = 1;
+                while (brackets > 0) {
                     if (s.charAt(index) == '[') {
-                        braces++;
+                        brackets++;
                     }
                     else if (s.charAt(index) == ']') {
-                        braces--;
+                        brackets--;
                     }
                     index++;
                 }

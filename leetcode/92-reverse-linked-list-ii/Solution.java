@@ -10,9 +10,6 @@
  */
 class Solution {
     public ListNode reverseBetween(ListNode head, int m, int n) {
-        if (head == null || head.next == null) {
-            return head;
-        }
         ListNode cur = head;
         ListNode prev = null;
         ListNode nodeA = null;
@@ -24,20 +21,20 @@ class Solution {
                 prev = cur;
                 cur = cur.next;
             }
-            else {
+            else if (i < n) {
                 ListNode temp = cur.next;
                 cur.next = prev;
                 prev = cur;
                 cur = temp;
             }
         }
+        nodeA.next = cur;
         if (nodeAPrev != null) {
             nodeAPrev.next = prev;
         }
         else {
             head = prev;
         }
-        nodeA.next = cur;
         return head;
     }
 }

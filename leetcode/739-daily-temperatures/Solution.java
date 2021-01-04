@@ -1,7 +1,7 @@
 class Solution {
     public int[] dailyTemperatures(int[] T) {
         int[] res = new int[T.length];
-        if (T.length < 2) {
+        if (T.length == 0) {
             return res;
         }
         Stack<Integer> stack = new Stack<Integer>();

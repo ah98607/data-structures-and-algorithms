@@ -19,20 +19,20 @@ class Solution {
             fast = fast.next.next;
             slow = slow.next;
         }
-        ListNode cur1 = head;
-        ListNode cur2 = reverse(slow);
-        while (cur1 != null && cur2 != null) {
-            if (cur1.val != cur2.val) {
+        ListNode curA = head;
+        ListNode curB = reverse(slow);
+        while (curA != null && curB != null) {
+            if (curA.val != curB.val) {
                 return false;
             }
-            cur1 = cur1.next;
-            cur2 = cur2.next;
+            curA = curA.next;
+            curB = curB.next;
         }
         return true;
     }
     private ListNode reverse(ListNode node) {
-        ListNode prev = null;
         ListNode cur = node;
+        ListNode prev = null;
         while (cur != null) {
             ListNode temp = cur.next;
             cur.next = prev;

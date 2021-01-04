@@ -29,20 +29,14 @@ class Solution {
         Queue<Integer> iq = new LinkedList<Integer>();
         nq.offer(root);
         iq.offer(0);
-        int minx = 0;
         int maxx = 0;
+        int minx = 0;
         int y = 0;
         while (!nq.isEmpty()) {
             int qSize = nq.size();
             for (int i = 0; i < qSize; i++) {
                 TreeNode temp = nq.poll();
                 int x = iq.poll();
-                minx = Math.min(minx, x);
-                maxx = Math.max(maxx, x);
-                if (!map.containsKey(x)) {
-                    map.put(x, new ArrayList<Elem>());
-                }
-                map.get(x).add(new Elem(y, temp.val));
                 if (temp.left != null) {
                     nq.offer(temp.left);
                     iq.offer(x - 1);
@@ -51,6 +45,12 @@ class Solution {
                     nq.offer(temp.right);
                     iq.offer(x + 1);
                 }
+                minx = Math.min(minx, x);
+                maxx = Math.max(maxx, x);
+                if (!map.containsKey(x)) {
+                    map.put(x, new ArrayList<Elem>());
+                }
+                map.get(x).add(new Elem(y, temp.val));
             }
             y++;
         }
@@ -64,8 +64,8 @@ class Solution {
                 }
             });
             List<Integer> iList = new ArrayList<Integer>();
-            for (int j = 0; j < map.get(i).size(); j++) {
-                iList.add(map.get(i).get(j).val);
+            for (Elem e : map.get(i)) {
+                iList.add(e.val);
             }
             res.add(iList);
         }

@@ -4,9 +4,9 @@ class Solution {
         if (nums.length == 0) {
             return res;
         }
-        int pivot = -1;
         int left = 0;
         int right = nums.length - 1;
+        int pivot = -1;
         while (left < right - 1) {
             int mid = left + (right - left) / 2;
             if (target == nums[mid]) {
@@ -23,19 +23,19 @@ class Solution {
         if (target == nums[left]) {
             pivot = left;
         }
-        if (target == nums[right]) {
+        else if (target == nums[right]) {
             pivot = right;
         }
         if (pivot == -1) {
             return res;
         }
         int index = pivot;
-        while (index >= 0 && nums[index] == nums[pivot]) {
+        while (index >= 0 && nums[index] == target) {
             index--;
         }
         res[0] = index + 1;
         index = pivot;
-        while (index < nums.length && nums[index] == nums[pivot]) {
+        while (index < nums.length && nums[index] == target) {
             index++;
         }
         res[1] = index - 1;

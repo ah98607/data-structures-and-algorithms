@@ -16,7 +16,7 @@ class Solution {
         ListNode prev = null;
         int cout = 0;
         while (cur1 != null && cur2 != null) {
-            int temp = cout + cur1.val + cur2.val;
+            int temp = cur1.val + cur2.val + cout;
             ListNode node = new ListNode(temp % 10);
             cout = temp / 10;
             if (prev != null) {
@@ -30,7 +30,7 @@ class Solution {
             cur2 = cur2.next;
         }
         while (cur1 != null) {
-            int temp = cout + cur1.val;
+            int temp = cur1.val + cout;
             ListNode node = new ListNode(temp % 10);
             cout = temp / 10;
             if (prev != null) {
@@ -43,7 +43,7 @@ class Solution {
             cur1 = cur1.next;
         }
         while (cur2 != null) {
-            int temp = cout + cur2.val;
+            int temp = cur2.val + cout;
             ListNode node = new ListNode(temp % 10);
             cout = temp / 10;
             if (prev != null) {

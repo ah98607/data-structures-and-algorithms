@@ -23,10 +23,10 @@ class Solution {
         if (t.left != null && t.right != null) {
             sb.append("(" + tree2str(t.left) + ")(" + tree2str(t.right) + ")");
         }
-        else if (t.left != null) {
+        else if (t.left != null && t.right == null) {
             sb.append("(" + tree2str(t.left) + ")");
         }
-        else if (t.right != null) {
+        else if (t.left == null && t.right != null) {
             sb.append("()(" + tree2str(t.right) + ")");
         }
         return sb.toString();

@@ -5,8 +5,9 @@ class Solution {
         for (int i = 0; i < A[0].length(); i++) {
             freq[A[0].charAt(i) - 'a']++;
         }
+        int[] tempFreq = new int[26];
         for (int i = 1; i < A.length; i++) {
-            int[] tempFreq = new int[26];
+            Arrays.fill(tempFreq, 0);
             for (int j = 0; j < A[i].length(); j++) {
                 tempFreq[A[i].charAt(j) - 'a']++;
             }

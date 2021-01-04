@@ -1,8 +1,5 @@
 class Solution {
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
-        if (s.length() == 0) {
-            return 0;
-        }
         Map<Character, Integer> freq = new HashMap<Character, Integer>();
         int start = 0;
         int maxLen = 0;

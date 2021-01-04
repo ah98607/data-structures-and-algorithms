@@ -1,8 +1,8 @@
 class QE {
     int val;
+    boolean removed;
     SE se;
     int id;
-    boolean removed;
     public QE(int val, int id) {
         this.val = val;
         this.id = id;
@@ -10,8 +10,8 @@ class QE {
 }
 class SE {
     int val;
-    QE qe;
     boolean removed;
+    QE qe;
     public SE(int val) {
         this.val = val;
     }

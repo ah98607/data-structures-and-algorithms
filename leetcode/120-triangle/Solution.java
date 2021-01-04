@@ -1,8 +1,5 @@
 class Solution {
     public int minimumTotal(List<List<Integer>> triangle) {
-        if (triangle.size() == 0) {
-            return 0;
-        }
         int[] dp = new int[triangle.get(triangle.size() - 1).size()];
         for (int i = 0; i < triangle.get(triangle.size() - 1).size(); i++) {
             dp[i] = triangle.get(triangle.size() - 1).get(i);

@@ -14,9 +14,9 @@ class Trie {
     
     /** Inserts a word into the trie. */
     public void insert(String word) {
-        int index = 0;
         TrieNode cur = root;
-        while (index < word.length() && cur.next.containsKey(word.charAt(index))) {
+        int index = 0;
+        while (index < word.length() && cur != null && cur.next.containsKey(word.charAt(index))) {
             cur = cur.next.get(word.charAt(index++));
         }
         while (index < word.length()) {
@@ -28,19 +28,19 @@ class Trie {
     
     /** Returns if the word is in the trie. */
     public boolean search(String word) {
-        int index = 0;
         TrieNode cur = root;
-        while (index < word.length() && cur.next.containsKey(word.charAt(index))) {
+        int index = 0;
+        while (index < word.length() && cur != null && cur.next.containsKey(word.charAt(index))) {
             cur = cur.next.get(word.charAt(index++));
         }
-        return index == word.length() && cur.isWord;
+        return cur.isWord && index == word.length();
     }
     
     /** Returns if there is any word in the trie that starts with the given prefix. */
     public boolean startsWith(String prefix) {
-        int index = 0;
         TrieNode cur = root;
-        while (index < prefix.length() && cur.next.containsKey(prefix.charAt(index))) {
+        int index = 0;
+        while (index < prefix.length() && cur != null && cur.next.containsKey(prefix.charAt(index))) {
             cur = cur.next.get(prefix.charAt(index++));
         }
         return index == prefix.length();

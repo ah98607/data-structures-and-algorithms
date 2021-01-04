@@ -1,16 +1,13 @@
 class Elem {
     char c;
-    int freq;
-    public Elem(char c, int freq) {
+    int f;
+    public Elem(char c, int f) {
         this.c = c;
-        this.freq = freq;
+        this.f = f;
     }
 }
 class Solution {
     public String frequencySort(String s) {
-        if (s.length() == 0) {
-            return "";
-        }
         Map<Character, Integer> freq = new HashMap<Character, Integer>();
         for (int i = 0; i < s.length(); i++) {
             if (!freq.containsKey(s.charAt(i))) {
@@ -22,7 +19,7 @@ class Solution {
         }
         Queue<Elem> pq = new PriorityQueue<Elem>(new Comparator<Elem>() {
             public int compare(Elem e1, Elem e2) {
-                return e2.freq - e1.freq;
+                return e2.f - e1.f;
             }
         });
         for (Map.Entry<Character, Integer> entry : freq.entrySet()) {
@@ -31,7 +28,7 @@ class Solution {
         StringBuilder sb = new StringBuilder();
         while (!pq.isEmpty()) {
             Elem e = pq.poll();
-            for (int i = 0; i < e.freq; i++) {
+            for (int i = 0; i < e.f; i++) {
                 sb.append(e.c);
             }
         }

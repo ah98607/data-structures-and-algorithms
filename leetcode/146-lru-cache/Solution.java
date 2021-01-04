@@ -10,9 +10,9 @@ class ListNode {
 }
 class LRUCache {
     Map<Integer, ListNode> map;
-    int capacity;
     ListNode dHead;
     ListNode dTail;
+    int capacity;
     public LRUCache(int capacity) {
         this.capacity = capacity;
         map = new HashMap<Integer, ListNode>();
@@ -47,15 +47,15 @@ class LRUCache {
         map.put(key, new ListNode(key, value));
         add(map.get(key));
     }
-    private void remove(ListNode node) {
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
-    }
     private void add(ListNode node) {
         dTail.prev.next = node;
         node.prev = dTail.prev;
         node.next = dTail;
         dTail.prev = node;
+    }
+    private void remove(ListNode node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
     }
 }
 

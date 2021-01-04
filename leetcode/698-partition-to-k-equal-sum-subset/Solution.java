@@ -7,22 +7,22 @@ class Solution {
         if (total % k != 0) {
             return false;
         }
-        return recFind(0, 0, total / k, new boolean[nums.length], nums, k);
+        return recFind(0, 0, total / k, nums, k, new boolean[nums.length]);
     }
-    private boolean recFind(int start, int sum, int target, boolean[] vis, int[] nums, int k) {
-        if (k == 1) {
-            return true;
-        }
+    private boolean recFind(int start, int sum, int target, int[] nums, int k, boolean[] vis) {
         if (sum >= target) {
             if (sum == target) {
-                return recFind(0, 0, target, vis, nums, k - 1);
+                return recFind(0, 0, target, nums, k - 1, vis);
             }
             return false;
+        }
+        if (k == 1) {
+            return true;
         }
         for (int i = start; i < nums.length; i++) {
             if (!vis[i]) {
                 vis[i] = true;
-                if (recFind(i + 1, sum + nums[i], target, vis, nums, k)) {
+                if (recFind(i + 1, sum + nums[i], target, nums, k, vis)) {
                     return true;
                 }
                 vis[i] = false;
